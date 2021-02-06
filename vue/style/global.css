@@ -1,0 +1,39 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+nav {
+  display: block;
+  width: 100vw;
+  height: 3rem;
+  background-color: #DE7D4D;
+  box-shadow: 1px 0 black;
+  box-shadow: 0 2px 2px gray;
+}
+
+nav button {
+  background: none;
+  color: white;
+  font-family: monospace, sans-serif;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  padding: .2rem 2rem ;
+}
+
+nav button:hover {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+
+h1 {
+  color: #0a7cb4;
+  margin: .5rem;
+}
+
+h1 i {
+  color: #DE7D4D;
+}
