@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <title> ConvSport </title>
 
-    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="vue/style/global.css" rel="stylesheet" type="text/css"/>
   </head>
 
   <body>
