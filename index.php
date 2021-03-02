@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "vue/Vue.php";
 
 $accueil=new Vue("connexion");
