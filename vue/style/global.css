@@ -4,8 +4,11 @@ html, body {
   background-color: white;
 }
 
-nav {
-  display: block;
+b {
+  font-size: large;
+}
+.navigation {
+  overflow: hidden;
   width: 100vw;
   height: 3rem;
   background-color: #2a2f3a;
@@ -13,20 +16,34 @@ nav {
   box-shadow: 0 2px 2px gray;
 }
 
-nav button {
-  background: none;
+.navigation a:hover {
+  background-color: rgba(255, 255, 255, 0.900);
+  color: black;
+  font-weight: bold;
+
+}
+nav {
+  height: 100%;
+
+}
+.navigation a  {
+
   color: white;
   font-family: monospace, sans-serif;
+  text-align: center;
+  text-decoration: none;
   border: none;
   cursor: pointer;
   height: 100%;
-  padding: .2rem 2rem ;
+  padding: 14px 16px ;
+
 }
 
-nav button:hover {
-  background-color: white;
-  color: black;
-  font-weight: bold;
+.navigation_gauche{
+  float: left;
+}
+.navigation_droite {
+  float: right;
 }
 
 h1 {
@@ -36,4 +53,51 @@ h1 {
 
 h1 i {
   color: #2a2f3a;
+}
+
+
+#connexion_box{
+  width:400px;
+  margin:0 auto;
+  margin-top:10%;
+}
+
+#connexion_box form {
+  width:100%;
+  padding: 30px;
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+#connexion_box h1{
+  width: 38%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+
+#connexion_box input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+#connexion_box input[type=submit] {
+  background-color: #2a2f3a;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+#connexion_box input[type=submit]:hover {
+  background-color: white;
+  color: #2a2f3a;
+  border: 1px solid #2a2f3a;
 }

@@ -1,24 +1,39 @@
 <?php 
 
-
+include "debug.php";
 
 class Vue {
         private $file;
 
+        private $titre;
+
         public function __construct($filename)
         {
-           $this->file="vue/".$filename.".php";
+           $this->file="vue/vue_".$filename.".php";
         }
 
-        public function genere()
+        public function load()
         {
-            if(file_exists($this->file))
+            $contenu=$this->genereContenu($this->file,array('rien'=>"rien"));
+            $vue=$this->genereContenu("vue/template.php",array('contenu'=>$contenu,'titre'=>$this->titre));
+            echo $vue;
+        }
+
+        public function genereContenu($file,$data)
+        {
+            if(file_exists($file))
             {
+               
+                //extrait les données du tableau      
+                extract($data);
                 ob_start();
-                require $this->file;
+                
+                require $file;
+               
                 return ob_get_clean();
+                
             }
-            else echo "<h1>404 file: ".$this->file." not found</h1>";
+            else console_log("Fichier $file pas trouvé !");
             
         }
     

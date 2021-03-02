@@ -1,5 +1,5 @@
 <?php 
 include "vue/Vue.php";
-$accueil=new Vue("accueil");
-$accueil->genere();
-?>
+
+$accueil=new Vue("connexion");
+$accueil->load(array());
