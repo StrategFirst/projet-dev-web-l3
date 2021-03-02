@@ -1,5 +1,5 @@
-<?php 
+<?php
 include "vue/Vue.php";
 $accueil=new Vue("accueil");
-$accueil->genere();
+echo $accueil->genere();
 ?>
