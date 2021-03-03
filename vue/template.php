@@ -22,8 +22,8 @@
 
     <div class="navigation">
       <nav>
-          <a class="navigation_gauche" href=""> Administration </a>
-          <a class="navigation_gauche" href=""> Consultation </a>
+          <a class="navigation_gauche" href='index.php?action=admin'> Administration </a>
+          <a class="navigation_gauche" href='index.php?action=consult'> Consultation </a>
           
           <a class="navigation_droite" href='index.php?action=connexion'> Connexion </a>
       </nav>    
