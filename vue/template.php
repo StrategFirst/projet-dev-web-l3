@@ -18,14 +18,14 @@
 
   <body>
     <header>
-    <h1> <i>Conv</i>Sport </h1>
+    <a id="home" href='index.php'><h1> <i>Conv</i>Sport </h1></a>
 
     <div class="navigation">
       <nav>
           <a class="navigation_gauche" href=""> Administration </a>
           <a class="navigation_gauche" href=""> Consultation </a>
           
-          <a class="navigation_droite" href=""> Connexion </a>
+          <a class="navigation_droite" href='index.php?action=connexion'> Connexion </a>
       </nav>    
         
     </div>

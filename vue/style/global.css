@@ -46,6 +46,9 @@ nav {
   float: right;
 }
 
+#home {
+  text-decoration: none;
+}
 h1 {
   color: #0a7cb4;
   margin: .5rem;
