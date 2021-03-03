@@ -8,7 +8,7 @@
         <input type="text" placeholder="Entrez le nom de l'utilisateur" name="username" required>
 
         
-        <label><b>Nom d'utilisateur</b></label>
+        <label><b>Mot de passe</b></label>
         <input type="password" placeholder="Entrez le mot de passe" name="password" required>
 
         <input type="submit" id="submit" value="connexion">

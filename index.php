@@ -1,5 +1,6 @@
 <?php
-include "vue/Vue.php";
+include "controlleur/MainControlleur.php";
 
-$accueil=new Vue("connexion");
-$accueil->load(array());
+$Main=new Main();
+$Main->chargeLeSite();
+

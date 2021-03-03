@@ -15,7 +15,7 @@ class Vue {
         public function load()
         {
             $contenu=$this->genereContenu($this->file,array('rien'=>"rien"));
-            $vue=$this->genereContenu("vue/template.php",array('contenu'=>$contenu,'titre'=>$this->titre));
+            $vue=$this->genereContenu("vue/template.php",array('contenu'=>$contenu));
             echo $vue;
         }
 
