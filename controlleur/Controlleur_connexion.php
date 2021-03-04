@@ -9,3 +9,5 @@ class Controlleur_connexion {
         $vue_connexion->load(array()); //peut passer des données a la vue dans le tableau
     }
 }
+
+?>

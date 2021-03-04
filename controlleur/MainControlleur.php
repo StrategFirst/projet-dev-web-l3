@@ -30,12 +30,12 @@ class Main {
              if($_GET['action']=='consult')
              {
                 console_log("action : consult");
-                $this->consult_control->consult(); 
+                $this->consult_control->consult();
              }
              if($_GET['action']=='admin')
              {
                 console_log("action : admin");
-                $this->admin_control->admin(); 
+                $this->admin_control->admin();
              }
         }
         else
@@ -44,7 +44,9 @@ class Main {
             $accueil=new Vue("accueil");
             $accueil->load(array());
         }
-      
+
     }
 
 }
+
+?>

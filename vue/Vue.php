@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include "debug.php";
 
@@ -23,18 +23,20 @@ class Vue {
         {
             if(file_exists($file))
             {
-               
-                //extrait les données du tableau      
+
+                //extrait les données du tableau
                 extract($data);
                 ob_start();
-                
+
                 require $file;
-               
+
                 return ob_get_clean();
-                
+
             }
             else console_log("Fichier $file pas trouvé !");
-            
+
         }
-    
+
 }
+
+?>
