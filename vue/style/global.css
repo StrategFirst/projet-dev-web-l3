@@ -97,10 +97,10 @@ h1 i {
   border: none;
   cursor: pointer;
   width: 100%;
+  border: 1px solid #2a2f3a;
 }
 
 #connexion_box input[type=submit]:hover {
   background-color: white;
   color: #2a2f3a;
-  border: 1px solid #2a2f3a;
 }
