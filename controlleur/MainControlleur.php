@@ -25,17 +25,17 @@ class Main {
             if($_GET['action']=='connexion')
              {
                 console_log("action : connexion");
-                 $this->connexion_control->connexion();
+                 $this->connexion_control->affichage();
              }
              if($_GET['action']=='consult')
              {
                 console_log("action : consult");
-                $this->consult_control->consult();
+                $this->consult_control->affichage();
              }
              if($_GET['action']=='admin')
              {
                 console_log("action : admin");
-                $this->admin_control->admin();
+                $this->admin_control->affichage();
              }
         }
         else
