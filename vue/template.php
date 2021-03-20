@@ -13,7 +13,7 @@
    <title> ConvSport </title>
 
     <link  rel="stylesheet" type="text/css" href="vue/style/global.css"/>
-
+    <script src=./template.js defer></script>
   </head>
 
   <body>
@@ -26,6 +26,7 @@
           <a class="navigation_gauche" href='./?action=consult'> Consultation </a>
 
           <a class="navigation_droite" href='./?action=connexion'> Connexion </a>
+          <button class="navigation_droite" onclick="destroy_session()"> Deconnexion </button> 
       </nav>
 
     </div>

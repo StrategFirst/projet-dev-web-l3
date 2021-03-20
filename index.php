@@ -1,5 +1,6 @@
 <?php
 include "controlleur/MainControlleur.php";
+
 session_start();
 
 if(isset($_SESSION["BDD_CHECK"]))

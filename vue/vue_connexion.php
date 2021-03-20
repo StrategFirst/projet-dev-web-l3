@@ -2,7 +2,7 @@
 <html>
 
     <div id="connexion_box">
-      <form action="" method="POST">
+      <form action="./?action=connexion" method="post">
         <h1>Connexion</h1>
         <label><b>Nom d'utilisateur</b></label>
         <input type="text" placeholder="Entrez le nom de l'utilisateur" name="username" required>
