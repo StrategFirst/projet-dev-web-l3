@@ -12,9 +12,9 @@ class Vue {
            $this->file="vue/vue_".$filename.".php";
         }
 
-        public function load()
+        public function load($data)
         {
-            $contenu=$this->genereContenu($this->file,array('rien'=>"rien"));
+            $contenu=$this->genereContenu($this->file,$data);
             $vue=$this->genereContenu("vue/template.php",array('contenu'=>$contenu));
             echo $vue;
         }

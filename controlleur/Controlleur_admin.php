@@ -12,6 +12,15 @@ class Controlleur_admin {
     }
     public function affichage()
     {
+       
+        if(isset($_SESSION["role"]))
+        {
+            $this->role=$_SESSION["role"];
+        }
+        else 
+        {
+            $this->role="visiteur";
+        }
         switch($this->role)
         {
             case "visiteur" :

@@ -13,7 +13,7 @@ class Controlleur_connexion {
           } else {
               $vue_connexion = new Vue("connexion");
               console_log("erreur de co");
-              //$vue_connexion->load(array("err_code"=>1,"err_msg"=>"Mot de passe ou identifiant incorrect"));
+              $vue_connexion->load(array("err_code"=>1,"err_msg"=>"Mot de passe ou identifiant incorrect"));
           }
         } else {
           $vue_connexion = new Vue("connexion");
@@ -34,8 +34,7 @@ class Controlleur_connexion {
           $login["username"] === $username &&
           $login["password"] === $password
         ) {
-          //faire passer le role au controlleur admin
-          session_start();
+          //session_start(); --> normalement pas besoin
           // juste mettre une variable de sesion pour le role suffit je pense
           $_SESSION["role"] = $login["type"];
 
@@ -43,7 +42,6 @@ class Controlleur_connexion {
         }
       }
       //si on est arrivé jusqu'ici c'est qu'aucun ne correspondait
-      
       return false;
     }
 }
