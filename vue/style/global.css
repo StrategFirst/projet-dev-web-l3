@@ -60,9 +60,9 @@ h1 i {
 
 
 #connexion_box{
-  width:400px;
-  margin:0 auto;
-  margin-top:10%;
+  width: 400px;
+  margin-top: 10vh;
+  position: relative;
 }
 
 #connexion_box form {
@@ -71,6 +71,10 @@ h1 i {
   border: 1px solid #f1f1f1;
   background: #fff;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  position: absolute;
+  top: 0;
+  left: 50vw;
+  transform: translate(-50%,0);
 }
 #connexion_box h1{
   width: 38%;
