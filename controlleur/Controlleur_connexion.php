@@ -1,7 +1,16 @@
 <?php
 require_once "vue/Vue.php";
+require_once "modele/database.php";
 
 class Controlleur_connexion {
+ 
+ 
+    private $BDD;
+
+    public function __construct()
+    {
+      $this->BDD=new ModeleBDD();
+    }
 
     public function affichage()
     {
@@ -24,24 +33,23 @@ class Controlleur_connexion {
     //ça devrait allez dans un modèle en partie bientôt
     private function connexion($username, $password) {
       
-      //TO do : requete sql de récupération des mdp et ide de la bdd (via modéle)
-      $queryResult /*fake*/ = [
-        ["username"=>"entraineur","password"=>"bidon","id"=>1,"type"=>"entraineur"],
-        ["username"=>"secretaire","password"=>"bidon","id"=>2,"type"=>"secretaire"]
-      ];
-      foreach ($queryResult as $key => $login) {
+  
+      foreach ($this->BDD->getAdmin() as $login) {
+        console_log($login);
         if(
           $login["username"] === $username &&
           $login["password"] === $password
         ) {
-          //session_start(); --> normalement pas besoin
+          // faire passer le role au controlleur admin
+          session_start();
           // juste mettre une variable de sesion pour le role suffit je pense
-          $_SESSION["role"] = $login["type"];
+          $_SESSION["role"] = $login["role"];
 
           return true;
         }
       }
       //si on est arrivé jusqu'ici c'est qu'aucun ne correspondait
+      
       return false;
     }
 }
