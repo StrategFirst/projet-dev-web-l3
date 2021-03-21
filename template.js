@@ -7,6 +7,7 @@ function destroy_session()
         if (xmlhttp.readyState == 4) {
             if (xmlhttp.status == 200) {
                 alert("session detruite");
+                window.location.href= "/";
                // console.log(xmlhttp.response);
                // console.log(xmlhttp.responseText); --> ne marche pas je ne sais pas pourquoi ,
                // je voulais afficher le echo du .php avec l'alerte mais ca marche pas
