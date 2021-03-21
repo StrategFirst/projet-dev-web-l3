@@ -1,151 +1,59 @@
+/* Global css */
+:root {
+  --primary-color: #2a2f3a;
+  --secondary-color: #0a7cb4;
+}
+
+/* Page asset */
 html, body {
   margin: 0;
   padding: 0;
   background-color: white;
 }
 
-b {
-  font-size: large;
-}
-.navigation {
-  overflow: hidden;
-  width: 100vw;
-  height: 3rem;
-  background-color: #2a2f3a;
-  box-shadow: 1px 0 black;
-  box-shadow: 0 2px 2px gray;
-}
-
-.navigation a:hover {
-  background-color: rgba(255, 255, 255, 0.900);
-  color: black;
-  font-weight: bold;
-
-}
-nav {
-  height: 100%;
-
-}
-.navigation a  {
-
-  color: white;
-  font-family: monospace, sans-serif;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  height: 100%;
-  padding: 14px 16px ;
-
-}
-
-.navigation_gauche{
-  float: left;
-}
-.navigation_droite {
-  float: right;
-}
-
-#home {
+/* Header */
+header #home {
   text-decoration: none;
 }
+header h1 i {
+  color: var(--primary-color);
+}
+
+/* Global Style */
 h1 {
-  color: #0a7cb4;
+  color: var(--secondary-color);
   margin: .5rem;
 }
-
-h1 i {
-  color: #2a2f3a;
-}
-
-
-#connexion_box{
-  width: 400px;
-  margin-top: 10vh;
-  position: relative;
-}
-
-#connexion_box form {
-  width:100%;
-  padding: 30px;
-  border: 1px solid #f1f1f1;
-  background: #fff;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  position: absolute;
-  top: 0;
-  left: 50vw;
-  transform: translate(-50%,0);
-}
-#connexion_box h1{
-  width: 38%;
-  margin: 0 auto;
-  padding-bottom: 10px;
-}
-
-
-#connexion_box input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-
-#connexion_box input[type=submit] {
-  background-color: #2a2f3a;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  border: 1px solid #2a2f3a;
-}
-
-#connexion_box input[type=submit]:hover {
-  background-color: white;
-  color: #2a2f3a;
-}
-
 #contenu table,th,td {
-
   border: 1px solid black;
   border-collapse: collapse;
-
 }
-
 #contenu th, td {
   padding : 5px;
 }
-
 #retour {
-  background-color: #2a2f3a;
+  background-color: var(--primary-color);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100%;
-  border: 1px solid #2a2f3a;
+  border: 1px solid var(--primary-color);
   text-decoration: none;
-    margin: .5em;
+  margin: .5em;
 }
-
 #retour:hover {
   background: white;
-  color: #2a2f3a;
+  color: var(--primary-color);
 }
-
-#box {
+.box {
   border: 1px solid #f1f1f1;
   background: #fff;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   width: Calc(100% - 2rem);
   margin: .8rem auto;
 }
-
-#box h3 {
+.box h3 {
   margin: 0 0 1rem 1rem;
 }
