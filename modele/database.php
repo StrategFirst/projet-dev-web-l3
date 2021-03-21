@@ -33,6 +33,12 @@ class ModeleBDD // class utilisée pour se co a la BDD
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getMatchsCol($col)
+    {
+      $Query="SELECT $col FROM matchs";
+     return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getMatchById($matchID) {
       if(is_numeric($matchID)) {
         $Query = "SELECT * FROM matchs WHERE id = {$matchID}";
