@@ -24,6 +24,11 @@ class ModeleBDD // class utilisée pour se co a la BDD
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getMatchAvecConvocation() {
+      $Query = "SELECT m.* FROM matchs AS m JOIN convocations AS c ON m.id = c.id_match GROUP BY c.id_match";
+      return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
 };
 
