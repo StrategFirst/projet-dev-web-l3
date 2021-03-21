@@ -33,16 +33,35 @@ class ModeleBDD // class utilisée pour se co a la BDD
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getMatchById($matchID) {
+      if(is_numeric($matchID)) {
+        $Query = "SELECT * FROM matchs WHERE id = {$matchID}";
+        return $this->bdd->query($Query)->fetch(PDO::FETCH_ASSOC);
+      } else {
+        throw new ErrorException("SQL injection protection triggered");
+      }
+
+    }
+
     public function getMatchAvecConvocation() {
       $Query = "SELECT m.* FROM matchs AS m JOIN convocations AS c ON m.id = c.id_match GROUP BY c.id_match";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    //Table joueurs  
+    //Table joueurs
     public function getJoueurs()
     {
       $Query="SELECT * FROM joueurs";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getJoueursByConvocation($matchID) {
+      if(is_numeric($matchID)) {
+        $Query = "SELECT j.* FROM joueurs AS j JOIN convocations AS c ON j.id = c.id_joueur WHERE c.id_match = {$matchID}";
+        return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
+      } else {
+        throw new ErrorException("SQL injection protection triggered");
+      }
     }
 
     public function addJoueur(string $nom,string $prenom,$license) //license 0 ou 1 si libre ou pas
@@ -61,7 +80,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
       $Query="SELECT * FROM absence";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
- 
+
 
 
     function setAbsence($idjoueur,$date,$status) //status= A,B,N,S
