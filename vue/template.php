@@ -22,12 +22,26 @@
 
     <div class="navigation">
       <nav>
-          <?= (isset($_SESSION["role"])) ? '<a class="navigation_gauche" href="./?action=admin"> Administration </a>' : '' ?>
-          <a class="navigation_gauche" href='./?action=consult'> Consultation </a>
+        <a class="navigation_gauche" href='./?action=consult'> Consultation </a>
+        <?php
+          if(isset($_SESSION["role"])) {
+            if($_SESSION["role"] == 'entraineur') {
+              echo '<a class="navigation_gauche" href="./?action=convocation"> Convocations </a>';
+              echo '<a class="navigation_gauche" href="./?action=rencontre"> Rencontres </a>';
+              echo '<a class="navigation_gauche" href="./?action=absence"> Absences </a>';
+              echo '<a class="navigation_gauche" href="./?action=rencontres&mode=lecture"> Rencontres </a>'; // lecture seul
+              echo '<a class="navigation_gauche" href="./?action=effectif&mode=lecture"> Effectif </a>'; // lecture seul
 
-          <?= (isset($_SESSION["role"])) ?
-            '<a class="navigation_droite" onclick="destroy_session()"> Deconnexion </a>' :
-            '<a class="navigation_droite" href="./?action=connexion"> Connexion </a>' ?>
+            } else if ($_SESSION["role"] == 'secretaire') {
+              echo '<a class="navigation_gauche" href="./?action=effectif"> Effectifs </a>';
+              echo '<a class="navigation_gauche" href="./?action=rencontres"> Rencontres </a>';
+              echo '<a class="navigation_gauche" href="./?action=absence"> Absences </a>';
+            }
+            echo '<a class="navigation_droite" onclick="destroy_session()"> Deconnexion </a>';
+          } else {
+            echo '<a class="navigation_droite" href="./?action=connexion"> Connexion </a>';
+          }
+        ?>
 
       </nav>
 
