@@ -18,6 +18,11 @@
 
   <body>
     <header>
+    <?php if(session_status() ==PHP_SESSION_NONE)
+            {
+              session_start();
+            }
+          ?>
     <a id="home" href='./'><h1> <i>Conv</i>Sport </h1></a>
 
     <div class="navigation">

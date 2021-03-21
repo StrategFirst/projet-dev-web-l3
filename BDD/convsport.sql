@@ -110,6 +110,8 @@ CREATE TABLE IF NOT EXISTS `matchs` (
 --
 ALTER TABLE `absences`
   ADD CONSTRAINT `absences_ibfk_1` FOREIGN KEY (`id`) REFERENCES `joueurs` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  
+ALTER TABLE `absences` CHANGE `status` `status` ENUM('A','B','N','S') CHARACTER SET utf8 COLLATE utf8_bin NULL; 
 
 --
 -- Contraintes pour la table `convocations`
