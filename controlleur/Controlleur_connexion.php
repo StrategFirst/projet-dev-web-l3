@@ -21,7 +21,6 @@ class Controlleur_connexion {
               $vue_connexion->load(array()); // à voir pour des paramètres éventuel
           } else {
               $vue_connexion = new Vue("connexion");
-              console_log("erreur de co");
               $vue_connexion->load(array("err_code"=>1,"err_msg"=>"Mot de passe ou identifiant incorrect"));
           }
         } else {
