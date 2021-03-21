@@ -122,3 +122,15 @@ h1 i {
   background: white;
   color: #2a2f3a;
 }
+
+#box {
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  width: Calc(100% - 2rem);
+  margin: .8rem auto;
+}
+
+#box h3 {
+  margin: 0 0 1rem 1rem;
+}

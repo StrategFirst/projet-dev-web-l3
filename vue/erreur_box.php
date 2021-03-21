@@ -1,6 +1,3 @@
-<?php /* section temporaire */ ?>
-<?php $err_msg = "test"; $err_code = 007; ?>
-
 <style>
   .error_box {
     border: 2px solid #500;
@@ -29,7 +26,6 @@
   }
 </script>
 
-<?php /* fin temp */ ?>
 <div class="error_box">
   <p> <strong> Erreur : </strong> <?= $err_msg ?> #<?= $err_code ?> </p> <button onclick="removeErrorBox(event)"> X </button>
 </div>

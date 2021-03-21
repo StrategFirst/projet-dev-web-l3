@@ -28,6 +28,8 @@ if(isset($_GET['matchid'])) {
 EOT;
   echo $string;
   } else {
+    $err_msg = "Invalid parameters";
+    $err_code = 002;
     require "erreur_box.php";
   }
   echo '<a href="./?action=consult" id="retour"> Liste complète </a>';

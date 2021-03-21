@@ -3,6 +3,7 @@ require_once "vue/Vue.php";
 require_once "controlleur/Controlleur_connexion.php";
 require_once "controlleur/Controlleur_consult.php";
 require_once "controlleur/Controlleur_admin.php";
+require_once "controlleur/Controlleur_effectif.php";
 
 class Main {
 
@@ -36,6 +37,12 @@ class Main {
              {
                 console_log("action : admin");
                 $this->admin_control->affichage();
+             }
+             if($_GET['action']=='effectif')
+             {
+               $this->page = new Controlleur_effectif();
+               $this->page->affichage();
+
              }
         }
         else
