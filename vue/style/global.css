@@ -115,3 +115,21 @@ h1 i {
 #contenu th, td {
   padding : 5px;
 }
+
+#retour {
+  background-color: #2a2f3a;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border: 1px solid #2a2f3a;
+  text-decoration: none;
+    margin: .5em;
+}
+
+#retour:hover {
+  background: white;
+  color: #2a2f3a;
+}
