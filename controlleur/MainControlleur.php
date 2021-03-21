@@ -25,7 +25,7 @@ class Main {
         {
             if($_GET['action']=='connexion')
              {
-                console_log("action : connexion");
+                 console_log("action : connexion");
                  $this->connexion_control->affichage();
              }
              if($_GET['action']=='consult')
@@ -40,10 +40,18 @@ class Main {
              }
              if($_GET['action']=='effectif')
              {
-               $this->page = new Controlleur_effectif();
-               $this->page->affichage();
-
+                $this->page = new Controlleur_effectif();
+                $this->page->affichage();
              }
+             if($_GET['action']=='rencontres')
+             {
+                if($_GET['mode']=='lecture')
+                {
+                      console_log("action : rencotre mode :lecture");
+                      $this->consult_control->affiche_rencontre();
+                }
+             }
+
         }
         else
         {
