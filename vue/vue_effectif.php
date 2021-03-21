@@ -14,7 +14,7 @@ if( (!isset($_GET['mode'])) || ($_GET['mode'] != 'lecture') ) {
     require "erreur_box.php";
   } else {
     $addField = <<<EOT
-        <div id="box">
+        <div class="box">
           <h3> Ajouter </h3>
           <input type="text" placeholder="nom" required/>
           <input type="text" placeholder="nom" required/>
@@ -27,7 +27,7 @@ EOT;
 }
 ?>
 
-<div id="box">
+<div class="box">
 <h3> Courant </h3>
 <?php
 require_once "modele/database.php";

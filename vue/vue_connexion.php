@@ -1,14 +1,4 @@
-<?php
-  if(isset($err_code))
-  {
-
-    echo ("
-    <script defer>
-      alert(\"$err_msg\");
-    </script>" );
-  }
-
-?>
+<?php if(isset($err_code) && isset($err_msg)) require "vue/erreur_box.php"; ?>
 
 
 

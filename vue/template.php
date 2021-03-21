@@ -10,22 +10,22 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-   <title> ConvSport </title>
+    <title> ConvSport </title>
 
-    <link  rel="stylesheet" type="text/css" href="vue/style/global.css"/>
+    <link rel="stylesheet" type="text/css" href="vue/style/global.css"/>
+    <link rel="stylesheet" type="text/css" href="vue/style/nav-bar.css"/>
+
+    <link rel="stylesheet" type="text/css" href="vue/style/connexion.css"/>
     <script src=./template.js defer></script>
+
   </head>
+
+  <?php if(session_status() == PHP_SESSION_NONE) session_start(); ?>
 
   <body>
     <header>
-    <?php if(session_status() ==PHP_SESSION_NONE)
-            {
-              session_start();
-            }
-          ?>
-    <a id="home" href='./'><h1> <i>Conv</i>Sport </h1></a>
+      <a id="home" href='./'><h1> <i>Conv</i>Sport </h1></a>
 
-    <div class="navigation">
       <nav>
         <a class="navigation_gauche" href='./?action=consult'> Consultation </a>
         <?php
@@ -35,7 +35,6 @@
               echo '<a class="navigation_gauche" href="./?action=absence"> Absences </a>';
               echo '<a class="navigation_gauche" href="./?action=rencontres&mode=lecture"> Rencontres </a>'; // lecture seul
               echo '<a class="navigation_gauche" href="./?action=effectif&mode=lecture"> Effectif </a>'; // lecture seul
-
             } else if ($_SESSION["role"] == 'secretaire') {
               echo '<a class="navigation_gauche" href="./?action=effectif"> Effectifs </a>';
               echo '<a class="navigation_gauche" href="./?action=rencontres&mode=edition"> Rencontres </a>';
@@ -48,10 +47,8 @@
         ?>
 
       </nav>
-
-    </div>
     </header>
-    
+
     <div id="contenu">
 
     <?php echo $contenu ?>

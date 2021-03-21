@@ -15,9 +15,6 @@ class Main {
 
     public function __construct()
     {
-        $this->connexion_control= new Controlleur_connexion();
-        $this->consult_control= new Controlleur_consult();
-        $this->admin_control= new Controlleur_admin();
     }
 
     public function chargeLeSite()
@@ -26,23 +23,23 @@ class Main {
         {
             if($_GET['action']=='connexion')
              {
-                 console_log("action : connexion");
-                 $this->connexion_control->affichage();
+                 $this->controlleur= new Controlleur_connexion();
+                 $this->controlleur->affichage();
              }
              if($_GET['action']=='consult')
              {
-                console_log("action : consult");
-                $this->consult_control->affichage();
+                $this->controlleur= new Controlleur_consult();
+                $this->controlleur->affichage();
              }
              if($_GET['action']=='admin')
              {
-                console_log("action : admin");
-                $this->admin_control->affichage();
+                $this->controlleur= new Controlleur_admin();
+                $this->controlleur->affichage();
              }
              if($_GET['action']=='effectif')
              {
-                $this->page = new Controlleur_effectif();
-                $this->page->affichage();
+                $this->controlleur = new Controlleur_effectif();
+                $this->controlleur->affichage();
              }
              if($_GET['action']=='rencontres')
              {
@@ -64,7 +61,6 @@ class Main {
         }
         else
         {
-            console_log("action : acceueil");
             $accueil=new Vue("accueil");
             $accueil->load(array());
         }
