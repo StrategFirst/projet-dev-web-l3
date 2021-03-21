@@ -104,3 +104,14 @@ h1 i {
   background-color: white;
   color: #2a2f3a;
 }
+
+#contenu table,th,td {
+
+  border: 1px solid black;
+  border-collapse: collapse;
+
+}
+
+#contenu th, td {
+  padding : 5px;
+}
