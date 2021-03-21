@@ -25,9 +25,21 @@ class ModeleBDD // class utilisée pour se co a la BDD
         if($this->bdd==null)
         {
             //creation du pdo
-        }
-        return $bdd;
+            $this->bdd = new PDO('mysql:host=localhost;port=3308;dbname=convsport;',       
+            'root', '',
+            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));     
+             }
+        return $this->bdd;
+    } 
+
+    public function getAdmin() //retourne la table des id + mdp 
+    {
+        $qry='SELECT * from admin';
+        
+        return $this->getBdd()->query($qry);
     }
-};
+
+
+}; 
 
 ?>
