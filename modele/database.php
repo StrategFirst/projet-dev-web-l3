@@ -5,7 +5,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
 
     // contructeur instantie le pdo
     function __construct() {
-      $config = parse_ini_file('../config.ini');
+      $config = parse_ini_file('config.ini');
       $dsn = "{$config["bddtype"]}:dbname={$config["bddname"]};host={$config["bddhost"]}";
       $user = $config["bdduname"];
       $password = $config["bddupass"];
@@ -16,9 +16,14 @@ class ModeleBDD // class utilisée pour se co a la BDD
     }
 
     private function init_bdd() {
-      $this->bdd->query($file_get_contents('../BDD/convsport.sql'));
+      $this->bdd->query($file_get_contents('BDD/convsport.sql'));
     }
 
+    public function getAdmin() {
+      $Query = "SELECT * FROM admin";
+      return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
     //fonction par requete : QueryAdmin => retourne le tableau des admins (mdp id ect)
     private function getBdd()
     {

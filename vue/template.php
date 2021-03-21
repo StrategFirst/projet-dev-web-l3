@@ -22,11 +22,13 @@
 
     <div class="navigation">
       <nav>
-          <a class="navigation_gauche" href='./?action=admin'> Administration </a>
+          <?= (isset($_SESSION["role"])) ? '<a class="navigation_gauche" href="./?action=admin"> Administration </a>' : '' ?>
           <a class="navigation_gauche" href='./?action=consult'> Consultation </a>
 
-          <a class="navigation_droite" href='./?action=connexion'> Connexion </a>
-          <button class="navigation_droite" onclick="destroy_session()"> Deconnexion </button> 
+          <?= (isset($_SESSION["role"])) ?
+            '<a class="navigation_droite" onclick="destroy_session()"> Deconnexion </a>' :
+            '<a class="navigation_droite" href="./?action=connexion"> Connexion </a>' ?>
+
       </nav>
 
     </div>
