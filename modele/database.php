@@ -49,6 +49,21 @@ class ModeleBDD // class utilisée pour se co a la BDD
     }
 
     //Table joueurs
+    public function removeJoueur(int $id) {
+      $Remove=$this->bdd->prepare("DELETE FROM joueurs WHERE id = :id");
+      $Remove->bindParam(':id',$id);
+      var_dump($Remove->execute());
+      echo "1";
+    }
+
+    public function addJoueur(string $nom,string $prenom,$license) {
+      $Insert=$this->bdd->prepare("INSERT INTO joueurs (nom,prenom,license) VALUES (:name,:firstname,:licence)");
+      $Insert->bindParam(':name',$nom);
+      $Insert->bindParam(':firstname',$prenom);
+      $Insert->bindParam(':licence',$license);
+      $Insert->execute();
+    }
+
     public function getJoueurs()
     {
       $Query="SELECT * FROM joueurs";
@@ -62,16 +77,6 @@ class ModeleBDD // class utilisée pour se co a la BDD
       } else {
         throw new ErrorException("SQL injection protection triggered");
       }
-    }
-
-    public function addJoueur(string $nom,string $prenom,$license) //license 0 ou 1 si libre ou pas
-    {
-      $Query = 'insert into joueurs values(:nom,:prenom,:license);';
-      $prep=$this->bdd->prepare($Query,array(PDO::ATTR_CURSOR=>PDO::CURSOR_FWDONLY));
-      $prep->bindparam(':nom',$nom);
-      $prep->bindparam(':prenom',$prenom);
-      $prep->bindparam(':license',$license);
-      $prep->execute();
     }
 
     //Table absences

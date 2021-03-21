@@ -38,6 +38,7 @@ class Main {
              if($_GET['action']=='effectif')
              {
                 $this->controlleur = new Controlleur_effectif();
+                $this->controlleur->update();
                 $this->controlleur->affichage();
              }
              if($_GET['action']=='rencontres')

@@ -16,10 +16,12 @@ if( (!isset($_GET['mode'])) || ($_GET['mode'] != 'lecture') ) {
     $addField = <<<EOT
         <div class="box">
           <h3> Ajouter </h3>
-          <input type="text" placeholder="nom" required/>
-          <input type="text" placeholder="nom" required/>
-          <input type="checkbox"/>
-          <input type="submit" value="Ajouter"/>
+          <form action="./?action=effectif&mode=edition" method="POST">
+            <input type="text" placeholder="nom" required name="nom"/>
+            <input type="text" placeholder="prénom" required name="prenom"/>
+            <input type="checkbox" name="license"/>
+            <input type="submit" value="Ajouter"/>
+          </form>
         </div>
 EOT;
   echo $addField;
@@ -38,6 +40,7 @@ foreach ($BDD->getJoueurs() as $value) {
     <div>
       <h4> {$value['nom']} {$value['prenom']} </h4>
       <span> {$licence} </span>
+      <form action="./?action=effectif&mode=edition" method="POST"><input type="hidden" name="id" value="{$value['id']}"/><input type="submit" value="supprimer"/></form>
     </div>
 
 EOJ;
