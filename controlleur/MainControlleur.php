@@ -4,6 +4,7 @@ require_once "controlleur/Controlleur_connexion.php";
 require_once "controlleur/Controlleur_consult.php";
 require_once "controlleur/Controlleur_admin.php";
 require_once "controlleur/Controlleur_effectif.php";
+require_once "controlleur/Controlleur_rencontre.php";
 
 class Main {
 
@@ -45,8 +46,16 @@ class Main {
              {
                 if($_GET['mode']=='lecture')
                 {
-                      $this->controlleur = new Controlleur_consult();
-                      $this->controlleur->affiche_rencontre();
+                      console_log("action : rencotre mode :lecture");
+                      $this->page=new Controlleur_rencontre();
+                      $this->page->affiche_lecture();
+                }
+                else if($_GET['mode']=='edition')
+                {
+                    console_log("action : rencotre mode :edition");
+                    $this->page=new Controlleur_rencontre();
+                    $this->page->affiche_edition();
+
                 }
              }
 

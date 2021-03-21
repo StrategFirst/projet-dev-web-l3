@@ -32,13 +32,12 @@
           if(isset($_SESSION["role"])) {
             if($_SESSION["role"] == 'entraineur') {
               echo '<a class="navigation_gauche" href="./?action=convocation"> Convocations </a>';
-              echo '<a class="navigation_gauche" href="./?action=rencontre"> Rencontres </a>';
               echo '<a class="navigation_gauche" href="./?action=absence"> Absences </a>';
               echo '<a class="navigation_gauche" href="./?action=rencontres&mode=lecture"> Rencontres </a>'; // lecture seul
               echo '<a class="navigation_gauche" href="./?action=effectif&mode=lecture"> Effectif </a>'; // lecture seul
             } else if ($_SESSION["role"] == 'secretaire') {
               echo '<a class="navigation_gauche" href="./?action=effectif"> Effectifs </a>';
-              echo '<a class="navigation_gauche" href="./?action=rencontres"> Rencontres </a>';
+              echo '<a class="navigation_gauche" href="./?action=rencontres&mode=edition"> Rencontres </a>';
               echo '<a class="navigation_gauche" href="./?action=absence"> Absences </a>';
             }
             echo '<a class="navigation_droite" onclick="destroy_session()"> Deconnexion </a>';
