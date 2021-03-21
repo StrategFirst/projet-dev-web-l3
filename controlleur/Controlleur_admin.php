@@ -12,12 +12,12 @@ class Controlleur_admin {
     }
     public function affichage()
     {
-       
+        session_start();
         if(isset($_SESSION["role"]))
         {
             $this->role=$_SESSION["role"];
         }
-        else 
+        else
         {
             $this->role="visiteur";
         }
@@ -35,7 +35,7 @@ class Controlleur_admin {
 
         }
         $vue_admin->load(array()); //variables a passer a la vue exemple type de role
-        
+
     }
 
 public function setRole(string $role)
