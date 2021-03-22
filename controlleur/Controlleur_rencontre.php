@@ -1,4 +1,6 @@
 <?php 
+require_once "vue/Vue.php";
+require_once "modele/database.php";
 
 class Controlleur_rencontre
 {
@@ -28,9 +30,12 @@ class Controlleur_rencontre
         $terrain=$this->BDD->getMatchsCol('terrain');
         $lieu=$this->BDD->getMatchsCol('lieu');
 
+       // $enum_compet=$this->BDD->getMatchsEnum('competition');
+       // $enum_equipe=$this->BDD->getMatchsEnum('equipe_locale');
+
         $vue_rencontre->load(array('matchs'=>$matchs,'competition'=>$competition,
         'equipe_locale'=>$equipe_locale,'equipe_adverse'=>$equipe_adverse,
-        'terrain'=>$terrain,'lieu'=>$lieu));
+        'terrain'=>$terrain,'lieu'=>$lieu)); //,'enum_compet'=>$enum_compet,'enum_equipe'=>$enum_equipe));
 
     }
 }

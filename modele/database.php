@@ -5,7 +5,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
 
     // contructeur instantie le pdo
     function __construct() {
-      $config = parse_ini_file('config.ini');
+      $config = parse_ini_file((realpath(dirname(__FILE__))).'/../config.ini');
       $dsn = "{$config["bddtype"]}:dbname={$config["bddname"]};host={$config["bddhost"]};port={$config["bddport"]}";
       $user = $config["bdduname"];
       $password = $config["bddupass"];
@@ -39,6 +39,17 @@ class ModeleBDD // class utilisée pour se co a la BDD
      return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    //ne marche pas mais la requete fonctionne avec MySqL
+    
+    public function getMatchsEnum($col)
+    {
+      $Query="SELECT column_type FROM information_schema.COLUMNS 
+      WHERE TABLE_NAME = 'matchs'
+          AND COLUMN_NAME = '$col' ";
+          return $this->bdd->query($Query)->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function getMatchById($matchID) {
       if(is_numeric($matchID)) {
         $Query = "SELECT * FROM matchs WHERE id = {$matchID}";
@@ -49,6 +60,17 @@ class ModeleBDD // class utilisée pour se co a la BDD
 
     }
 
+    public function addMatch($competition,$equipe_locale,$equipe_adverse,$date,$terrain,$lieu) {
+      $Insert=$this->bdd->prepare("INSERT INTO matchs (lieu,terrain,date,equipe_adverse,equipe_locale,competition) 
+      VALUES (:lieu,:terrain,:date,:equipe_adverse,:equipe_locale,:competition)");
+      $Insert->bindParam(':lieu',$lieu);
+      $Insert->bindParam(':terrain',$terrain);
+      $Insert->bindParam(':date',$date);
+      $Insert->bindParam(':equipe_adverse',$equipe_adverse);
+      $Insert->bindParam(':equipe_locale',$equipe_locale);
+      $Insert->bindParam(':competition',$competition);
+      $Insert->execute();
+    }
     public function getMatchAvecConvocation() {
       $Query = "SELECT m.* FROM matchs AS m JOIN convocations AS c ON m.id = c.id_match GROUP BY c.id_match";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
