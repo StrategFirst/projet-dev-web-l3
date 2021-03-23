@@ -42,13 +42,14 @@ class ModeleBDD // class utilisée pour se co a la BDD
 
     //ne marche pas mais la requete fonctionne avec MySqL
     
-    public function getMatchsEnum($col)
+   /* public function getMatchsEnum($col)
     {
       $Query="SELECT column_type FROM information_schema.COLUMNS 
       WHERE TABLE_NAME = 'matchs'
           AND COLUMN_NAME = '$col' ";
           return $this->bdd->query($Query)->fetch(PDO::FETCH_ASSOC);
     }
+    */
 
     public function getMatchById($matchID) {
       if(is_numeric($matchID)) {
@@ -71,9 +72,29 @@ class ModeleBDD // class utilisée pour se co a la BDD
       $Insert->bindParam(':competition',$competition);
       $Insert->execute();
     }
+
+    public function updateMatch($param_nom,$param_value,$id) 
+    {
+      
+      $Query=$this->bdd->prepare("UPDATE matchs SET :nom=:val
+      WHERE id=:id");
+      $Query->bindParam(':nom',$param_nom);
+      $Query->bindParam(':val',$param_value);   
+      $Query->bindParam(':id',$id);
+     
+      $Query->execute();
+      
+    }
+
     public function getMatchAvecConvocation() {
       $Query = "SELECT m.* FROM matchs AS m JOIN convocations AS c ON m.id = c.id_match GROUP BY c.id_match";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function DelMatch($id)
+    {
+      $Query="DELETE from matchs WHERE id=$id";
+      $this->bdd->query($Query);
     }
 
     //Table joueurs

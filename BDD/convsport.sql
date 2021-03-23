@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `matchs` (
   `date` timestamp NOT NULL,
   `equipe_adverse` varchar(200) COLLATE utf8_bin NOT NULL,
   `equipe_locale` varchar(200) COLLATE utf8_bin NOT NULL,
-  `competition` enum('amical','coupe de france','coupe de l''anjou','coupe des pays de la loire','coupe des reserves','d1-groupe A','d4-groupe E','d5-groupe A') COLLATE utf8_bin NOT NULL DEFAULT 'amical',
+  `competition` enum('amical','coupe de france','coupe de l anjou','coupe des pays de la loire','coupe des reserves','d1-groupe A','d4-groupe E','d5-groupe A') COLLATE utf8_bin NOT NULL DEFAULT 'amical',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 

@@ -1,3 +1,5 @@
+<script src=./vue/update_delete.js defer></script>
+
 <h1>Edition des rencontres (table matchs)</h1>
 
 <table>
@@ -16,14 +18,19 @@
 
 function td_select($name="",$data,$options=null)
 {
-    echo "<td><select name=$name><option value='$data'>$data</option>";
+    $value=preg_replace("/\s+/","*",$data);
+    echo "<td><select name=$name><option value='$value'>$data</option>";
     //afficher toutes les options possibles
     if($options!=null)
     {
         
         foreach($options as $opt)
         {   if($opt[$name]!=$data) 
-            echo "<option value='$opt[$name]'>$opt[$name]</option>";
+            { 
+               $value=preg_replace("/\s+/","*",$opt[$name]);
+
+            echo "<option value='$value'>$opt[$name]</option>";
+             }
         }
     }   
         echo"</select></td>";
@@ -62,7 +69,9 @@ foreach($matchs as $match )
         td_select('terrain',$match['terrain'],$terrain);
         td_select('lieu',$match['lieu'],$lieu);
 
+        td("<button class=\"updateButton\">modifier</button>");
         
+        td("<button class=\"deleteButton\">supprimer</button>");
         echo"</tr>";
         
         
@@ -74,7 +83,7 @@ foreach($matchs as $match )
     </table>
 <?php 
 // a remplacer par la recup des enums dans mysql
-$enum_competition=array('amical'=>"amical",'coupe de france'=>"coupe de france",'coupe de l\'anjou'=>"coupe de l'anjou",
+$enum_competition=array('amical'=>"amical",'coupe de france'=>"coupe de france",'coupe de l anjou'=>"coupe de l anjou",
 'coupe des pays de la loire'=>"coupe des pays de la loire",'coupe des reserves'=>"coupe des reserves",'d1-groupe A'=>"d1-groupe A",
 'd4-groupe E'=>"d4-groupe E",'d5-groupe A'=>"d5-groupe A");
 
@@ -95,7 +104,7 @@ $enum_equipe=array('SENIOR_A'=>"SENIOR_A",'SENIOR_B'=>"SENIOR_B",'SENIOR_C'=>"SE
             };
         </script>
 
-        <form action="controlleur/update_matchs.php" method="post">
+        <form action="controlleur/ajout_matchs.php" method="post">
         
         <table>
             <tr>
@@ -118,8 +127,8 @@ $enum_equipe=array('SENIOR_A'=>"SENIOR_A",'SENIOR_B'=>"SENIOR_B",'SENIOR_C'=>"SE
                     <?php 
                         foreach($enum_competition as $key=>$val)
                         {
-                            $value=preg_replace("/\s+/","",$val);
-                            console_log($value);
+                            $value=preg_replace("/\s+/","*",$val);
+                            
                             echo "<option value=$value>$val</option>";
                         }
                     ?>
@@ -155,3 +164,4 @@ $enum_equipe=array('SENIOR_A'=>"SENIOR_A",'SENIOR_B'=>"SENIOR_B",'SENIOR_C'=>"SE
         </form>
 
     </div>
+
