@@ -39,12 +39,13 @@ function td_select($name="",$data,$options=null)
 
 function td_date($data)
 {
-    echo "<td><input type=\"date\" value=\"$data\"></td>";
+    echo "<td><input type=\"date\" name=\"jour\" value=\"$data\"></td>";
 }
 
 function td_time($data)
 {
-    echo "<td><input type=\"time\" value=\"$data\"></td>";
+    $time=substr($data,0,-3); 
+    echo "<td><input type=\"time\" name=\"heure\" value=\"$time\"></td>";
 }
 
 function td($data)

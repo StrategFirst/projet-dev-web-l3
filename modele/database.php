@@ -73,16 +73,27 @@ class ModeleBDD // class utilisée pour se co a la BDD
       $Insert->execute();
     }
 
-    public function updateMatch($param_nom,$param_value,$id) 
+    public function updateMatch($competition,$equipe_locale,$equipe_adverse,$date,$terrain,$lieu,$id) 
     {
       
-      $Query=$this->bdd->prepare("UPDATE matchs SET :nom=:val
+      $Query=$this->bdd->prepare("UPDATE matchs SET 
+      competition=:competition,equipe_locale=:equipe_locale,
+      equipe_adverse=:equipe_adverse,date=:date,
+      terrain=:terrain,lieu=:lieu
       WHERE id=:id");
-      $Query->bindParam(':nom',$param_nom);
-      $Query->bindParam(':val',$param_value);   
-      $Query->bindParam(':id',$id);
+      
+      $Query->bindParam(':competition',$competition);
+      $Query->bindParam(':equipe_locale',$equipe_locale);   
+      $Query->bindParam(':equipe_adverse',$equipe_adverse);
+      $Query->bindParam(':date',$date);  
+      $Query->bindParam(':terrain',$terrain); 
+      $Query->bindParam(':lieu',$lieu); 
+      $Query->bindParam(':id',$id); 
      
       $Query->execute();
+      $Query->debugDumpParams();
+     
+      
       
     }
 

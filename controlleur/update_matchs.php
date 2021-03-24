@@ -5,19 +5,23 @@ $BDD=new ModeleBDD();
 
 if(isset($_POST))
 {
-    foreach($_POST as $key=>$val) //pas ultra clean mais marche 
-    {
-        if($key=="id")
-        {
-            $id=$val;
-        }
-        
-        else{
-        $value=preg_replace("/[*]/"," ",$val);
-        echo $BDD->updateMatch($key,$value,$id);
-        }
+    $id=$_POST['id'];
+    
+    $competition=preg_replace("/[*]/"," ",$_POST['competition']);
+    
+    $equipe_locale=preg_replace("/[*]/"," ",$_POST['equipe_locale']);
+    $equipe_adverse=preg_replace("/[*]/"," ",$_POST['equipe_adverse']);
+    
+    
+    $date=$_POST['jour']." ".$_POST['heure'].":00";
+    $terrain=preg_replace("/[*]/"," ",$_POST['terrain']);
+    $lieu=preg_replace("/[*]/"," ",$_POST['lieu']);
 
-    }
+    
+
+     $BDD->updateMatch($competition,$equipe_locale,$equipe_adverse,$date,$terrain,$lieu,$id); 
+  
+
 }
 else
 //cas d'erreurs

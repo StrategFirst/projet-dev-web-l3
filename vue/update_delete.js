@@ -47,6 +47,8 @@ function update(event){
         urlparams +="&"+String(select.name)+"="+String(select.value)
 
     });
+    Array.from(row.querySelectorAll("input")).forEach(input=>
+        urlparams+="&"+String(input.name)+"="+String(input.value));
    
 
    console.log(urlparams);
@@ -61,7 +63,7 @@ function update(event){
         //verifier les status ect
         
         alert("La modification s'est bien effectuée !");
-        //document.location.reload();// le seul moyen que j'ai trouvé 
+        document.location.reload();// le seul moyen que j'ai trouvé 
     }) 
     
 
