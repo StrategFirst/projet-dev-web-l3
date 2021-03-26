@@ -41,10 +41,10 @@ class ModeleBDD // class utilisée pour se co a la BDD
 
 
     //ne marche pas mais la requete fonctionne avec MySqL
-    
+
    /* public function getMatchsEnum($col)
     {
-      $Query="SELECT column_type FROM information_schema.COLUMNS 
+      $Query="SELECT column_type FROM information_schema.COLUMNS
       WHERE TABLE_NAME = 'matchs'
           AND COLUMN_NAME = '$col' ";
           return $this->bdd->query($Query)->fetch(PDO::FETCH_ASSOC);
@@ -62,7 +62,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
     }
 
     public function addMatch($competition,$equipe_locale,$equipe_adverse,$date,$terrain,$lieu) {
-      $Insert=$this->bdd->prepare("INSERT INTO matchs (lieu,terrain,date,equipe_adverse,equipe_locale,competition) 
+      $Insert=$this->bdd->prepare("INSERT INTO matchs (lieu,terrain,date,equipe_adverse,equipe_locale,competition)
       VALUES (:lieu,:terrain,:date,:equipe_adverse,:equipe_locale,:competition)");
       $Insert->bindParam(':lieu',$lieu);
       $Insert->bindParam(':terrain',$terrain);
@@ -73,28 +73,28 @@ class ModeleBDD // class utilisée pour se co a la BDD
       $Insert->execute();
     }
 
-    public function updateMatch($competition,$equipe_locale,$equipe_adverse,$date,$terrain,$lieu,$id) 
+    public function updateMatch($competition,$equipe_locale,$equipe_adverse,$date,$terrain,$lieu,$id)
     {
-      
-      $Query=$this->bdd->prepare("UPDATE matchs SET 
+
+      $Query=$this->bdd->prepare("UPDATE matchs SET
       competition=:competition,equipe_locale=:equipe_locale,
       equipe_adverse=:equipe_adverse,date=:date,
       terrain=:terrain,lieu=:lieu
       WHERE id=:id");
-      
+
       $Query->bindParam(':competition',$competition);
-      $Query->bindParam(':equipe_locale',$equipe_locale);   
+      $Query->bindParam(':equipe_locale',$equipe_locale);
       $Query->bindParam(':equipe_adverse',$equipe_adverse);
-      $Query->bindParam(':date',$date);  
-      $Query->bindParam(':terrain',$terrain); 
-      $Query->bindParam(':lieu',$lieu); 
-      $Query->bindParam(':id',$id); 
-     
+      $Query->bindParam(':date',$date);
+      $Query->bindParam(':terrain',$terrain);
+      $Query->bindParam(':lieu',$lieu);
+      $Query->bindParam(':id',$id);
+
       $Query->execute();
       $Query->debugDumpParams();
-     
-      
-      
+
+
+
     }
 
     public function getMatchAvecConvocation() {
@@ -112,8 +112,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
     public function removeJoueur(int $id) {
       $Remove=$this->bdd->prepare("DELETE FROM joueurs WHERE id = :id");
       $Remove->bindParam(':id',$id);
-      var_dump($Remove->execute());
-      echo "1";
+      return $Remove->execute();
     }
 
     public function addJoueur(string $nom,string $prenom,$license) {

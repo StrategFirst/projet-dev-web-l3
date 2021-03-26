@@ -36,14 +36,22 @@ require_once "modele/database.php";
 $BDD = new ModeleBDD();
 foreach ($BDD->getJoueurs() as $value) {
   $licence = $value['license'] ? 'Licencié' : 'Non licencié';
+  if( $_SESSION['role'] == 'secretaire' ) {
   $joueur = <<<EOJ
     <div>
       <h4> {$value['nom']} {$value['prenom']} </h4>
       <span> {$licence} </span>
       <form action="./?action=effectif&mode=edition" method="POST"><input type="hidden" name="id" value="{$value['id']}"/><input type="submit" value="supprimer"/></form>
     </div>
-
 EOJ;
+} else{
+  $joueur = <<<EOJ
+    <div>
+      <h4> {$value['nom']} {$value['prenom']} </h4>
+      <span> {$licence} </span>
+    </div>
+EOJ;
+}
   echo $joueur;
 }
 ?>

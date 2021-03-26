@@ -11,16 +11,17 @@ class Controlleur_effectif {
 
     public function update()
     {
-      if(isset($_POST['nom']) && isset($_POST['prenom'])) {
-        $BDD = new ModeleBDD();
+      $BDD = new ModeleBDD();
+      if(isset($_POST['nom']) && isset($_POST['prenom'])) { //ajout
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
-        if(isset($_POST['id'])) { //suppression
-          $BDD->removeJoueur($id);
-
-        } else { // ajout
-          $license = isset($_POST['license']);
-          $BDD->addJoueur($nom,$prenom,($license?'1':'0'));
+        $license = isset($_POST['license']);
+        $BDD->addJoueur($nom,$prenom,($license?'1':'0'));
+      } else if(isset($_POST['id'])) { //suppression
+        if(!$BDD->removeJoueur($_POST['id'])) {
+          $err_msg = "Impossible de retiré le joueur";
+          $err_code = 003;
+          require 'vue/erreur_box.php';
         }
       }
     }
