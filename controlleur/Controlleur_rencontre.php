@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once "vue/Vue.php";
 require_once "modele/database.php";
 
@@ -9,6 +9,19 @@ class Controlleur_rencontre
     public function __construct()
     {
       $this->BDD=new ModeleBDD();
+    }
+
+    public function affichage($mode) {
+      switch ($mode) {
+        case 'edition':
+          $this->affiche_edition();
+        break;
+
+        case 'lecture':
+        default:
+          $this->affiche_lecture();
+        break;
+      }
     }
     //affiche la vue de lecture des rencontres pour l'entrainneur
     public function affiche_lecture()
