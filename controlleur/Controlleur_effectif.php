@@ -19,7 +19,7 @@ class Controlleur_effectif {
         $BDD->addJoueur($nom,$prenom,($license?'1':'0'));
       } else if(isset($_POST['id'])) { //suppression
         if(!$BDD->removeJoueur($_POST['id'])) {
-          $err_msg = "Impossible de retiré le joueur";
+          $err_msg = "Impossible de retiré le joueur (il doit avoirs une convocation)";
           $err_code = 003;
           require 'vue/erreur_box.php';
         }
