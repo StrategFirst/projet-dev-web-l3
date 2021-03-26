@@ -101,6 +101,10 @@ class ModeleBDD // class utilisée pour se co a la BDD
       $Query = "SELECT m.* FROM matchs AS m JOIN convocations AS c ON m.id = c.id_match GROUP BY c.id_match";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getMatchSansConvocation() {
+      $Query = "SELECT * FROM matchs WHERE id NOT IN (SELECT id_match FROM convocations)";
+      return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function DelMatch($id)
     {
