@@ -35,7 +35,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
 
     public function getMatchsCol($col)
     {
-      $Query="SELECT $col FROM matchs";
+      $Query="SELECT $col FROM matchs GROUP BY $col";
      return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
