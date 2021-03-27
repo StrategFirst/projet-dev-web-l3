@@ -13,7 +13,7 @@ $BDD = new ModeleBDD();
 <link href="vue/style/convocations.css" type="text/css" rel="stylesheet"/>
 <?php
 function getday($element) {
-    return $element['date']->format('z');
+    return $element['date']->format('Y/m/d');
 }
 function mapday($element) {
   $element['date'] = (new DateTime($element['date']));
@@ -23,7 +23,7 @@ $query = array_map('mapday',$BDD->getMatchSansConvocationPublie());
 $listJour = array_unique(array_map('getday',$query));
 echo '<select id="journee">';
 foreach($listJour as $value) {
-  echo "<option value=\"${value}\">Journée ${value}</option>";
+  echo "<option value=\"".str_replace('/','',$value)."\">${value}</option>";
 }
 echo '</select>';
 echo '<button onclick="saveConvocation()"> Enregistrer </button>';
@@ -42,7 +42,7 @@ function special($match) {
     "equipe_adverse":"'.$match['equipe_adverse'].'",
     "equipe_locale":"'.$match['equipe_locale'].'",
     "competition":"'.$match['competition'].'",
-    "journee":'.$match['date']->format('z').',
+    "journee":'.$match['date']->format('Ymd').',
     "joueurs":'.$match['joueurs'].'
   }
   ';
