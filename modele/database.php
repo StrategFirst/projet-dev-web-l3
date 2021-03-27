@@ -51,6 +51,19 @@ class ModeleBDD // class utilisée pour se co a la BDD
     }
     */
 
+    public function getJoueurDispoLeJour($day) {
+      $Query = "SELECT j.*
+                FROM joueurs AS j
+                WHERE j.id NOT IN (
+                  SELECT a.id
+                  FROM absences AS a
+                  WHERE a.date >= '{$day}T00:00:00.00'
+                    AND a.date <= '{$day}T23:59:59.999'
+                  );";
+      return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
+
+  }
+
     public function getMatchById($matchID) {
       if(is_numeric($matchID)) {
         $Query = "SELECT * FROM matchs WHERE id = {$matchID}";
