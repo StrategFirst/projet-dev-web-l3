@@ -185,7 +185,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
 
     function DeleteAbsence($idjoueur,$date)
     {
-      $Query = 'DELETE FROM absences WHERE \'id\'= :idjoueur AND \'date\'= :dat';
+      $Query = 'DELETE FROM absences WHERE id= :idjoueur AND date= :dat';
       $prep=$this->bdd->prepare($Query,array(PDO::ATTR_CURSOR=>PDO::CURSOR_FWDONLY));
       $prep->bindparam(':dat',$date);
       $prep->bindparam(':idjoueur',$idjoueur);

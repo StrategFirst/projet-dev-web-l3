@@ -13,6 +13,7 @@ $mois=(strlen($dt[1])==2) ?  $dt[1]: ("0".$dt[1]);
 $jour=(strlen($dt[0])==2) ? $dt[0]  : ("0".$dt[0]) ;
 $date="2021-".$mois."-".$jour;
 
+
 //si status =null on supprime de la table
 if($BDD->getAbsence($_POST['id'],$date)!=null)
 {
@@ -33,7 +34,6 @@ else
     //sinon on ne fait rien
 }
 
-//$BDD->setAbsence($_POST['id'],$date,$_POST['etat']);
 
 
 ?>

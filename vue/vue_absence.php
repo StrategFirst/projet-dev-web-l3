@@ -23,7 +23,7 @@
         {
             if(isset($selected) && $selected==1)
             {
-                echo "<option value=\"$etat\" selected>$etat</option>";
+                echo "<option value=\"$etat\" selected >$etat</option>";
             }
             else 
                 {
@@ -34,7 +34,7 @@
         {
             if(isset($selected) && $selected==1)
             {
-                echo "<option value=\"null\" selected></option>";
+                echo "<option value=\"null\" selected ></option>";
             }
             else 
             {
