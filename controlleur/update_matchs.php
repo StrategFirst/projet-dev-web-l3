@@ -7,15 +7,15 @@ if(isset($_POST))
 {
     $id=$_POST['id'];
     
-    $competition=preg_replace("/[*]/"," ",$_POST['competition']);
+    $competition=trim($_POST['competition']);
     
-    $equipe_locale=preg_replace("/[*]/"," ",$_POST['equipe_locale']);
-    $equipe_adverse=preg_replace("/[*]/"," ",$_POST['equipe_adverse']);
+    $equipe_locale=trim($_POST['equipe_locale']);
+    $equipe_adverse=trim($_POST['equipe_adverse']);
     
     
     $date=$_POST['jour']." ".$_POST['heure'].":00";
-    $terrain=preg_replace("/[*]/"," ",$_POST['terrain']);
-    $lieu=preg_replace("/[*]/"," ",$_POST['lieu']);
+    $terrain=trim($_POST['terrain']);
+    $lieu=trim($_POST['lieu']);
 
     
 
