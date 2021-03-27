@@ -15,7 +15,8 @@ class Controlleur_absence {
     {
         $vue_absence= new Vue("absence");
         $joueurs =$this->BDD->getJoueurs();
-        $vue_absence->load(array('joueurs'=>$joueurs));
+        $absences=$this->BDD->getAbsences();
+        $vue_absence->load(array('joueurs'=>$joueurs,'absences'=>$absences));
     }
 
 }
