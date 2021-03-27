@@ -1,4 +1,9 @@
-function submitConvocation() {
+function saveConvocation() {
+  submitConvocation(false);
+}
+function submitConvocation(publish) {
+  if(publish==undefined){publish=true;}
+  console.log(publish);
   let matchs = Array.from(document.querySelectorAll('#slotjournee > div'));
   let joueurs = matchs.map(
     match => ({
@@ -11,7 +16,7 @@ function submitConvocation() {
     //les .slice(1) servent à retiré l'indicateur j ou m de l'id qui signigifie s'il s'agit un joueur ou d'un match
   );
   fetch(
-    '/?action=convocation&ajout=true',
+    `/?action=convocation&ajout=true&publish=${publish}`,
     {
       method: 'POST',
       body: JSON.stringify(joueurs),

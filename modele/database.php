@@ -20,9 +20,16 @@ class ModeleBDD // class utilisée pour se co a la BDD
     }
 
 
-    public function addConvocations($id_match,$id_joueur) {
+    public function saveConvocations($id_match,$id_joueur) {
       $Insert=$this->bdd->prepare("INSERT INTO convocations (id_match,id_joueur)
-      VALUES (:match,:joueur)");
+          VALUES (:match,:joueur)");
+          $Insert->bindParam(':match',$id_match);
+          $Insert->bindParam(':joueur',$id_joueur);
+          $Insert->execute();
+        }
+    public function addConvocations($id_match,$id_joueur) {
+      $Insert=$this->bdd->prepare("INSERT INTO convocations (id_match,id_joueur,publie)
+      VALUES (:match,:joueur,1)");
       $Insert->bindParam(':match',$id_match);
       $Insert->bindParam(':joueur',$id_joueur);
       $Insert->execute();
@@ -194,7 +201,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
       return $prep->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function AddAbsence($idjoueur,$date,$statu) 
+    function AddAbsence($idjoueur,$date,$statu)
     {
       $Query = 'INSERT into absences (id,date,status) values (:idjoueur, :dat, :statu)';
       $prep=$this->bdd->prepare($Query,array(PDO::ATTR_CURSOR=>PDO::CURSOR_FWDONLY));

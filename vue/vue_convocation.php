@@ -26,6 +26,7 @@ foreach($listJour as $value) {
   echo "<option value=\"${value}\">Journée ${value}</option>";
 }
 echo '</select>';
+echo '<button onclick="saveConvocation()"> Enregistrer </button>';
 echo '<button onclick="submitConvocation()"> Publier </button>';
 
 for($i=0;$i<sizeof($query);$i++) {

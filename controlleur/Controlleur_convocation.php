@@ -20,13 +20,14 @@ class Controlleur_convocation {
         $BDD = new ModeleBDD();
         $config = parse_ini_file((realpath(dirname(__FILE__))).'/../config.ini');
         $first = true;
+        $doitEtrePublie = (isset($_GET['publish']) && ($_GET['publish']=='true'))?true:false;
         foreach(json_decode(file_get_contents('php://input')) as $match) {
           $match =get_object_vars($match);
           if($first){echo $BDD->deleteConvocationSameDayAs($match['match_id']);$first=false;}
           $MatchID = intval($match['match_id']);
           $PlayerIDlist = array_map('intval',$match['player_list_id']);
           if($config['minteamsize']<=sizeof($PlayerIDlist) && sizeof($PlayerIDlist)<=$config['maxteamsize']) {
-            array_walk($PlayerIDlist,array($this, 'ajout_une'),["MatchID"=>$MatchID,"BDD"=>$BDD]);
+            array_walk($PlayerIDlist,array($this, 'ajout_une'),["MatchID"=>$MatchID,"BDD"=>$BDD,"publication"=>$doitEtrePublie]);
           } else {
             http_response_code(405);
             die();
@@ -37,9 +38,14 @@ class Controlleur_convocation {
     {
       $ModeleBDD = $data['BDD'];
       $MatchID = $data['MatchID'];
+      $Publication = $data['publication'];
       $PlayerID = $player;
+      if($Publication) {
+        $ModeleBDD->addConvocations($MatchID,$PlayerID);
+      } else {
+        $ModeleBDD->saveConvocations($MatchID,$PlayerID);
 
-      $ModeleBDD->addConvocations($MatchID,$PlayerID);
+      }
     }
 }
 
