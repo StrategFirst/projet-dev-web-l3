@@ -3,7 +3,7 @@
 ### Contributeurs : Charles Sauvagnac & Mathieu Toulon
 
 #### INSTALLATION
-l'installatio de la BDD se fait tout seul avec le fichier .ini, si vous souhaitez modifier des paramètres (port, base ect.) vous pouvez le faire directement dans ce fichier
+l'installatio de la BDD se fait tout seul avec le fichier .ini (lors de la première visite sur le site), si vous souhaitez modifier des paramètres (port, base ect.) vous pouvez le faire directement dans ce fichier
 
 #### Partie Absences :
  particularité lorque le l'on seelectionne l'option 'vide' cela supprime l'absence associée
