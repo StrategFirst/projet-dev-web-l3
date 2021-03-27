@@ -32,8 +32,14 @@ function submitConvocation(publish) {
 ////////////
 
 function setFromData(journee) {
+  let date = document.querySelector('#journee').value;
+  let dateDecompose = date.match(/([0-9]{4})([0-9]{2})([0-9]{2})/)
+  dateDecompose.shift();
+  let anneeSelectionee = dateDecompose[0];
+  let moisSelectionee = dateDecompose[1];
+  let jourSelectionee = dateDecompose[2];
   document.getElementById("slotjournee").innerHTML=data.filter(e=>e.journee==journee).map(MatchToHTML).join`<br/>`;
-    setPlayer("25","25","2021",journee);
+    setPlayer(jourSelectionee,moisSelectionee,anneeSelectionee,journee);
 }
 
 ////////
@@ -59,7 +65,7 @@ function drop(ev) {
   ev.target.appendChild(document.getElementById(data));
 }
 async function setPlayer(day,month,year,journee) {
-  await fetch('/api/joueur_dispo_jour.php?month=02&day=25&year=2021')
+  await fetch(`/api/joueur_dispo_jour.php?month=${month}&day=${day}&year=${year}`)
 	.then(response=>response.json())
 	.then(information=>{
     document.getElementById("slotexempt").innerHTML = '';
@@ -70,6 +76,7 @@ async function setPlayer(day,month,year,journee) {
       element.draggable=true;
       element.ondragstart=drag;
       element.id=`j${player.id}`;
+      if(player.id==1) console.log('HERE');
       element.innerText = `${player.nom.toUpperCase()} ${player.prenom}`;
       for(let match of data.filter(e=>e.journee==journee)) {
         for(let joueur of match.joueurs) {
