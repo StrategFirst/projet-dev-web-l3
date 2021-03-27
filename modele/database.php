@@ -115,13 +115,27 @@ class ModeleBDD // class utilisée pour se co a la BDD
 
 
     }
-
+    public function deleteConvocationSameDayAs($id) {
+      $Request = $this->bdd->prepare("DELETE
+          	FROM convocations
+          	WHERE id_match IN
+          		(SELECT n.id
+          			FROM matchs AS n
+          			WHERE DATE_FORMAT(n.date, '%Y-%m-%d') = (
+          				SELECT DATE_FORMAT(m.date, '%Y-%m-%d') AS jour
+          				FROM matchs AS m
+          				WHERE m.id = ${id}
+          			)
+          		)
+          ;");
+        return $Request->execute();
+    }
     public function getMatchAvecConvocation() {
       $Query = "SELECT m.* FROM matchs AS m JOIN convocations AS c ON m.id = c.id_match GROUP BY c.id_match";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function getMatchSansConvocation() {
-      $Query = "SELECT * FROM matchs WHERE id NOT IN (SELECT id_match FROM convocations)";
+    public function getMatchSansConvocationPublie() {
+      $Query = "SELECT * FROM matchs WHERE id NOT IN (SELECT id_match FROM convocations WHERE publie = 1)";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -160,6 +174,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
         throw new ErrorException("SQL injection protection triggered");
       }
     }
+
 
     //Table absences
     public function getAbsences()
