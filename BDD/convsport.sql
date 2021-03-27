@@ -33,7 +33,7 @@ USE `convsport`;
 DROP TABLE IF EXISTS `absences`;
 CREATE TABLE IF NOT EXISTS `absences` (
   `id` int(11) NOT NULL,
-  `date` timestamp NOT NULL,
+  `date` date NOT NULL,
   `status` enum('A','B','N','S') COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`date`,`id`),
   KEY `id` (`id`)

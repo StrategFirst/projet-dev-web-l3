@@ -1,4 +1,4 @@
-<script src=./vue/update_delete.js defer></script>
+<script src="./vue/update_delete.js" defer></script>
 
 <h1>Edition des rencontres (table matchs)</h1>
 
@@ -33,10 +33,8 @@ function td_select($name="",$data,$options=null)
         foreach($options as $key=>$opt)
         {   if($opt!=$data) 
             { 
-             
-
                echo "<option value=\"$opt\">$opt</option>";
-             }
+            }
         }
     }   
         echo"</select></td>";

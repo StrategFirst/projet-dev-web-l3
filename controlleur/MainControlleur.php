@@ -6,12 +6,9 @@ require_once "controlleur/Controlleur_admin.php";
 require_once "controlleur/Controlleur_effectif.php";
 require_once "controlleur/Controlleur_rencontre.php";
 require_once "controlleur/Controlleur_convocation.php";
-
+require_once "controlleur/Controlleur_absence.php";
 class Main {
 
-    private $connexion_control;
-    private $consult_control;
-    private $admin_control;
 
 
     public function __construct()
@@ -51,6 +48,11 @@ class Main {
         case 'rencontres':
           $this->controlleur = new Controlleur_rencontre();
           $this->controlleur->affichage($_GET['mode']);
+        break;
+
+        case 'absence' :
+          $this->controlleur= new Controlleur_absence();
+          $this->controlleur->affichage();
         break;
 
         default:
