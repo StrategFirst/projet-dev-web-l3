@@ -12,6 +12,7 @@ class Controlleur_rencontre
     }
 
     public function affichage($mode) {
+      session_start();
       if( (!isset($_SESSION['role'])) ) { http_response_code(401); die(); }
       switch ($mode) {
         case 'edition':
@@ -28,7 +29,6 @@ class Controlleur_rencontre
     //affiche la vue de lecture des rencontres pour l'entrainneur
     public function affiche_lecture()
     {
-        session_start();
         $vue_rencontre=new Vue("rencontre_lecture");
         $matchs=$this->BDD->getMatchs();
         $vue_rencontre->load(array('matchs'=>$matchs)); // lui passer les matchs en parametre
@@ -36,7 +36,6 @@ class Controlleur_rencontre
 
     public function affiche_edition()
     {
-        session_start();
         $vue_rencontre=new Vue("rencontre_edition");
         $matchs=$this->BDD->getMatchs();
 
