@@ -13,6 +13,8 @@ class Controlleur_absence {
 
     public function affichage()
     {
+        session_start();
+        if( !isset($_SESSION['role'])) { http_response_code(401); die(); }
         $vue_absence= new Vue("absence");
         $joueurs =$this->BDD->getJoueurs();
         $absences=$this->BDD->getAbsences();

@@ -5,6 +5,7 @@ class Controlleur_effectif {
     public function affichage()
     {
         session_start();
+        if( (!isset($_SESSION['role'])) ) { http_response_code(401); die(); }
         $vue_consult=new Vue("effectif");
         $vue_consult->load(array()); //variables a passer a la vue exemple type de role
     }

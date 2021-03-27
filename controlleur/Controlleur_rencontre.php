@@ -12,8 +12,10 @@ class Controlleur_rencontre
     }
 
     public function affichage($mode) {
+      if( (!isset($_SESSION['role'])) ) { http_response_code(401); die(); }
       switch ($mode) {
         case 'edition':
+          if( $_SESSION['role'] != 'secretaire') { http_response_code(403); die(); }
           $this->affiche_edition();
         break;
 
