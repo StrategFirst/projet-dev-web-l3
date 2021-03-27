@@ -1,0 +1,35 @@
+.joueurDrop {
+  display: block;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.joueur {
+   background-color: #DDD;
+   padding: .2em;
+   margin: .1em;
+   cursor: pointer;
+   user-select: none;
+}
+
+#slotexempt {
+  width: 80%;
+}
+
+#slotexempt h4 {
+  display: block;
+}
+.box {
+  width: 100%;
+  display: inline-block;
+}
+main {
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+main * {
+
+  display: inline-block;
+}
