@@ -40,7 +40,7 @@ function update(event){
 
     let row=event.target.parentNode.parentNode;
     let ident=row.id.substring(1,row.id.length);
-    let id ={id:ident};
+    
 
     let urlparams="id="+ident;
     Array.from(row.querySelectorAll("select")).forEach(function(select){ 

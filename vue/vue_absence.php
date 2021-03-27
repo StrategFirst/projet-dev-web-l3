@@ -49,10 +49,12 @@
             $id=$joueur['id'];
             echo "<tr><td id=\"$id\">$prenom $nom </td>";
             //faire pour toutes les dates les select
-            foreach($dates_annee as $osef)
+            foreach($dates_annee as $date)
             {
 
-                echo"<td><select name=\"etat\" onchange=\"udpate(event)\">";
+                
+                echo"<td><input type=\"hidden\" name=\"date\" value=\"$date\">
+                <select name=\"etat\" onchange=\"udpate(event)\">";
                 option_etat("A");
                 option_etat("B");
                 option_etat("N",$joueur['license']);
