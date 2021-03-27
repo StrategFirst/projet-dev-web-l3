@@ -21,7 +21,10 @@ class Main {
       switch($_GET['action']) {
         case 'convocation':
           $this->controlleur= new Controlleur_convocation();
-          $this->controlleur->affichage();
+          if(isset($_GET['ajout']) && $_GET['ajout']=='true')
+            $this->controlleur->ajout();
+          else
+            $this->controlleur->affichage();
         break;
 
         case 'connexion':

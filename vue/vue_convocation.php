@@ -1,3 +1,4 @@
+<script src="vue/script/convocations.js"></script>
 <?php
 if( (!isset($_SESSION['role'])) ||  ($_SESSION['role']!='entraineur') ) {
   header('Location: /?mustlogin=true');
@@ -25,6 +26,8 @@ foreach($listJour as $value) {
   echo "<option value=\"${value}\">Journée ${value}</option>";
 }
 echo '</select>';
+echo '<button onclick="submitConvocation()"> Publier </button>';
+
 function special($match) {
   return '{
     "id":'.$match['id'].',
@@ -81,13 +84,13 @@ async function setPlayer(day,month,year) {
 			.map(info=>`<span class="joueur" draggable="true" ondragstart="drag(event)" id="j${info.id}">${info.nom.toUpperCase()} ${info.prenom}</span>`)
 			.join` `)
 }
+window.addEventListener("load",()=>setFromData(document.querySelector("#journee").value))
 ';
 echo '</script>';
 echo '<main>';
 echo '<div id="slotjournee">';
 echo '</div>';
 echo '<div id="slotexempt" ondrop="drop(event)" ondragover="allowDrop(event)" class="box">';
-echo '<h4> Joueur exempt </h4>';
 echo '</div>';
 echo '</main>';
 

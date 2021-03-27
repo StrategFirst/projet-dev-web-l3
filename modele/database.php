@@ -20,6 +20,13 @@ class ModeleBDD // class utilisée pour se co a la BDD
     }
 
 
+    public function addConvocations($id_match,$id_joueur) {
+      $Insert=$this->bdd->prepare("INSERT INTO convocations (id_match,id_joueur)
+      VALUES (:match,:joueur)");
+      $Insert->bindParam(':match',$id_match);
+      $Insert->bindParam(':joueur',$id_joueur);
+      $Insert->execute();
+    }
     //Table admin
     public function getAdmin() {
       $Query = "SELECT * FROM admin";
@@ -50,7 +57,6 @@ class ModeleBDD // class utilisée pour se co a la BDD
           return $this->bdd->query($Query)->fetch(PDO::FETCH_ASSOC);
     }
     */
-
     public function getJoueurDispoLeJour($day) {
       $Query = "SELECT j.*
                 FROM joueurs AS j
