@@ -158,11 +158,39 @@ class ModeleBDD // class utilisée pour se co a la BDD
     //Table absences
     public function getAbsences()
     {
-      $Query="SELECT * FROM absence";
+      $Query="SELECT * FROM absences";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
+    function getAbsence($idjoueur,$date)
+    {
+      $Query ='SELECT *from absences WHERE id= :idjoueur AND date= :dat';
+      $prep=$this->bdd->prepare($Query,array(PDO::ATTR_CURSOR=>PDO::CURSOR_FWDONLY));
+      $prep->bindparam(':dat',$date);
+      $prep->bindparam(':idjoueur',$idjoueur);
+      $prep->execute();
+      return $prep->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function AddAbsence($idjoueur,$date,$statu) 
+    {
+      $Query = 'INSERT into absences (id,date,status) values (:idjoueur, :dat, :statu)';
+      $prep=$this->bdd->prepare($Query,array(PDO::ATTR_CURSOR=>PDO::CURSOR_FWDONLY));
+      $prep->bindparam(':statu',$statu);
+      $prep->bindparam(':dat',$date);
+      $prep->bindparam(':idjoueur',$idjoueur);
+      $prep->execute();
+    }
+
+    function DeleteAbsence($idjoueur,$date)
+    {
+      $Query = 'DELETE FROM absences WHERE \'id\'= :idjoueur AND \'date\'= :dat';
+      $prep=$this->bdd->prepare($Query,array(PDO::ATTR_CURSOR=>PDO::CURSOR_FWDONLY));
+      $prep->bindparam(':dat',$date);
+      $prep->bindparam(':idjoueur',$idjoueur);
+      $prep->execute();
+    }
 
     function setAbsence($idjoueur,$date,$status) //status= A,B,N,S
     {
@@ -173,6 +201,6 @@ class ModeleBDD // class utilisée pour se co a la BDD
       $prep->bindparam(':idjoueur',$idjoueur);
       $prep->execute();
     }
-};
+  };
 
 ?>
