@@ -15,21 +15,27 @@
 
 <?php
 
+$enum_competition=array('amical'=>"amical",'coupe de france'=>"coupe de france",'coupe de l anjou'=>"coupe de l anjou",
+'coupe des pays de la loire'=>"coupe des pays de la loire",'coupe des reserves'=>"coupe des reserves",'d1-groupe A'=>"d1-groupe A",
+'d4-groupe E'=>"d4-groupe E",'d5-groupe A'=>"d5-groupe A");
+
+$enum_equipe=array('SENIOR_A'=>"SENIOR_A",'SENIOR_B'=>"SENIOR_B",'SENIOR_C'=>"SENIOR_C");
+
 
 function td_select($name="",$data,$options=null)
 {
-    $value=preg_replace("/\s+/","*",$data);
-    echo "<td><select name=$name><option value='$value'>$data</option>";
+   
+    echo "<td><select name=$name><option value=\"$data\">$data</option>";
     //afficher toutes les options possibles
     if($options!=null)
     {
         
-        foreach($options as $opt)
-        {   if($opt[$name]!=$data) 
+        foreach($options as $key=>$opt)
+        {   if($opt!=$data) 
             { 
-               $value=preg_replace("/\s+/","*",$opt[$name]);
+             
 
-            echo "<option value='$value'>$opt[$name]</option>";
+               echo "<option value=\"$opt\">$opt</option>";
              }
         }
     }   
@@ -53,6 +59,11 @@ function td($data)
     echo "<td> $data </td>";
 } 
 
+function td_text($name,$data)
+{
+    
+    echo "<td><input type=\"text\" name=$name value=\"$data\"></td>";
+}
 
 
 foreach($matchs as $match )
@@ -60,15 +71,15 @@ foreach($matchs as $match )
         $id=$match['id'];
         echo"<tr id=\"m$id\">";
         
-        td_select('competition',$match['competition'],$competition); 
-        td_select('equipe_locale',$match['equipe_locale'],$equipe_locale); 
-        td_select('equipe_adverse',$match['equipe_adverse'],$equipe_adverse);
+        td_select('competition',$match['competition'],$enum_competition); 
+        td_select('equipe_locale',$match['equipe_locale'],$enum_equipe); 
+        td_text('equipe_adverse',$match['equipe_adverse']); // a changer en input text
 
         $date_et_heure = preg_split("/[\s]+/", $match['date']);
         td_date($date_et_heure[0]);
         td_time($date_et_heure[1]);
-        td_select('terrain',$match['terrain'],$terrain);
-        td_select('lieu',$match['lieu'],$lieu);
+        td_text('terrain',$match['terrain']);// a changer en input text
+        td_text('lieu',$match['lieu']);// a changer en input text
 
         td("<button class=\"updateButton\">modifier</button>");
         
@@ -82,29 +93,13 @@ foreach($matchs as $match )
     ?>
 
     </table>
-<?php 
-// a remplacer par la recup des enums dans mysql
-$enum_competition=array('amical'=>"amical",'coupe de france'=>"coupe de france",'coupe de l anjou'=>"coupe de l anjou",
-'coupe des pays de la loire'=>"coupe des pays de la loire",'coupe des reserves'=>"coupe des reserves",'d1-groupe A'=>"d1-groupe A",
-'d4-groupe E'=>"d4-groupe E",'d5-groupe A'=>"d5-groupe A");
-
-$enum_equipe=array('SENIOR_A'=>"SENIOR_A",'SENIOR_B'=>"SENIOR_B",'SENIOR_C'=>"SENIOR_C");
-
-?>    
+    
     <div id="ajout">
 
     <br><br>
 
 
-        <script defer>
-            let Addrow =function()
-            {
-                
-                //je sais pas comment faire pour envoyer des données par post au fichier updtae match.php
-
-            };
-        </script>
-
+     
         <form action="controlleur/ajout_matchs.php" method="post">
         
         <table>
@@ -128,9 +123,9 @@ $enum_equipe=array('SENIOR_A'=>"SENIOR_A",'SENIOR_B'=>"SENIOR_B",'SENIOR_C'=>"SE
                     <?php 
                         foreach($enum_competition as $key=>$val)
                         {
-                            $value=preg_replace("/\s+/","*",$val);
+                           
                             
-                            echo "<option value=$value>$val</option>";
+                            echo "<option value=\"$val\">$val</option>";
                         }
                     ?>
                     </select>

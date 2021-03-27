@@ -13,13 +13,13 @@ if (isset($_POST['ajout']))
 
     $date=$_POST['date'].' '.$_POST['heure'].':00';
     // ne pas oublier de fusionner la date et  l'heure
-    $equipe_loc=preg_replace("/[*]/"," ",$_POST['equipe_locale']);
+    //$equipe_loc=preg_replace("/[*]/"," ",$_POST['equipe_locale']);
     console_log($equipe_loc);
-    $competition=preg_replace("/[*]/"," ",$_POST['competition']);
+    //$competition=preg_replace("/[*]/"," ",$_POST['competition']);
     console_log($competition);
 
-    $BDD->addMatch($competition,$equipe_loc,$_POST['equipe_adverse'],
-    $date,$_POST['terrain'],$_POST['lieu']);
+    $BDD->addMatch($_POST['competition'],$_POST['equipe_locale'],trim($_POST['equipe_adverse']),
+    $date,trim($_POST['terrain']),trim($_POST['lieu']));
 
    $str="An attente de l'ajout du matchs..";
 
