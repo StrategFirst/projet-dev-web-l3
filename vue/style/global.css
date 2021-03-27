@@ -58,3 +58,19 @@ h1 {
 .box h3 {
   margin: 0 0 1rem 1rem;
 }
+
+.effectif form {
+  display: inline;
+  margin: 0;
+}
+.effectif form input[type="submit"] {
+  display: inline-block;
+  min-width: 5rem;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: white;
+  padding: 14px 20px;
+  margin: .1rem;
+  cursor: pointer;
+
+}

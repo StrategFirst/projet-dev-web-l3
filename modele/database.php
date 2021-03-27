@@ -137,6 +137,10 @@ class ModeleBDD // class utilisée pour se co a la BDD
           ;");
         return $Request->execute();
     }
+    public function getMatchAvecConvocationPublie() {
+      $Query = "SELECT m.* FROM matchs AS m JOIN convocations AS c ON m.id = c.id_match WHERE c.publie = 1 GROUP BY c.id_match";
+      return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function getMatchAvecConvocation() {
       $Query = "SELECT m.* FROM matchs AS m JOIN convocations AS c ON m.id = c.id_match GROUP BY c.id_match";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
@@ -146,6 +150,11 @@ class ModeleBDD // class utilisée pour se co a la BDD
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function modifLicenceJoueur($id,$lic) {
+      $lic = $lic?0:1;
+      $Request = $this->bdd->prepare("UPDATE joueurs SET license = {$lic} WHERE joueurs.id = $id");
+      $Request->execute();
+    }
     public function DelMatch($id)
     {
       $Query="DELETE from matchs WHERE id=$id";

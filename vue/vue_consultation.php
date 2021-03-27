@@ -34,7 +34,7 @@ EOT;
   }
   echo '<a href="./?action=consult" id="retour"> Liste complète </a>';
 } else {
-  $ListeConvo = $BDD->getMatchAvecConvocation();
+  $ListeConvo = $BDD->getMatchAvecConvocationPublie();
   if(sizeof($ListeConvo) === 0) {
     echo "Aucune convocation publié à ce jour";
   } else {

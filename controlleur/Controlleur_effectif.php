@@ -23,6 +23,8 @@ class Controlleur_effectif {
           $err_code = 003;
           require 'vue/erreur_box.php';
         }
+      } else if(isset($_POST['idl'])) {
+        $BDD->modifLicenceJoueur($_POST['idl'],$_POST['licence']);
       }
     }
 }
