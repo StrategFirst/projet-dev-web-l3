@@ -8,7 +8,7 @@ l'installatio de la BDD se fait tout seul avec le fichier .ini (lors de la premi
 #### Partie Absences :
  particularité lorque le l'on seelectionne l'option 'vide' cela supprime l'absence associée
 
- #### Partie Rencontres :
+#### Partie Rencontres :
  Seul compétition et équipe sont des types enumérés les reste est editable
 
 ### Partie Administration :
