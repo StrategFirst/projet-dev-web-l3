@@ -1,13 +1,16 @@
+# ConvSport
 ### Projet de Dev Web de L3 Informatique de l'Unversité d'Angers.
 ### Contributeurs : Charles Sauvagnac & Mathieu Toulon
 
-## INSTALLATION
-l'installatio de la BDD se fait tout seul avec le fichier .ini (lors de la première visite sur le site), si vous souhaitez modifier des paramètres (port, base ect.) vous pouvez le faire directement dans ce fichier
+## Installation
+L'installation de la base de donnée est automatiquement réalisé à la première visite
+avec le fichier .ini , si vous souhaitez modifier des paramètres (port, host ect.) vous pouvez le faire directement dans le fichier `config.ini`
 
-#### Partie Absences :
+## Spécificité de chaque partie
+### Partie Absences :
  particularité lorque le l'on seelectionne l'option 'vide' cela supprime l'absence associée
 
-#### Partie Rencontres :
+### Partie Rencontres :
  Seul compétition et équipe sont des types enumérés les reste est editable
 
 ### Partie Administration :
@@ -19,7 +22,7 @@ l'installatio de la BDD se fait tout seul avec le fichier .ini (lors de la premi
   * login : entraineur
   * password : entraineur
 
-### Insertion par CSV
+## Insertion par CSV
 Il est possible d'ajouter des rencontres via un fichier CSV
 cependant il doit respecter le format suivant:<br/>
 `compétition`;`équipe local`;`équipe adverse`;`date\*`;`heure\*`;`terrain`;`lieu`<br/>
