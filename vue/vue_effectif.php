@@ -17,9 +17,15 @@ if( (!isset($_GET['mode'])) || ($_GET['mode'] != 'lecture') ) {
         <div class="box">
           <h3> Ajouter </h3>
           <form action="./?action=effectif&mode=edition" method="POST">
-            <input type="text" placeholder="nom" required name="nom"/>
-            <input type="text" placeholder="prénom" required name="prenom"/>
-            <input type="checkbox" name="license"/>
+            <label for="nom"> Nom : </label>
+            <input type="text" placeholder="nom" required name="nom" id="nom"/>
+            <br/>
+            <label for="prenom"> Prénom : </label>
+            <input type="text" placeholder="prénom" required name="prenom" id="prenom"/>
+            <br/>
+            <label for="license"> License : </label>
+            <input type="checkbox" name="license" id="license"/>
+            <br/>
             <input type="submit" value="Ajouter"/>
           </form>
         </div>
