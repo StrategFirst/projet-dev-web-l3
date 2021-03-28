@@ -1,6 +1,6 @@
 <?php 
 require_once (realpath( dirname( __FILE__ ))).'/../modele/database.php';
-require_once (realpath( dirname( __FILE__ ))).'/../debug.php';
+
 
 $BDD = new ModeleBDD ();
 

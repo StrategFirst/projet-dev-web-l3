@@ -18,7 +18,7 @@ class Controlleur_connexion {
 
           if($this->connexion($_POST['username'],$_POST['password'])) {
               $vue_connexion = new Vue("accueil");
-              $vue_connexion->load(array()); // à voir pour des paramètres éventuel
+              $vue_connexion->load(array()); 
           } else {
               $vue_connexion = new Vue("connexion");
               $vue_connexion->load(array("err_code"=>1,"err_msg"=>"Mot de passe ou identifiant incorrect"));
@@ -29,7 +29,6 @@ class Controlleur_connexion {
         }
     }
 
-    //ça devrait allez dans un modèle en partie bientôt
     private function connexion($username, $password) {
       $BDD = new ModeleBDD();
       $queryResult = ($BDD->getAdmin());
@@ -44,7 +43,7 @@ class Controlleur_connexion {
           return true;
         }
       }
-      //si on est arrivé jusqu'ici c'est qu'aucun ne correspondait
+    
 
       return false;
     }

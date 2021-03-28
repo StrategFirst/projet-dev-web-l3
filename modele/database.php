@@ -30,6 +30,9 @@ class ModeleBDD // class utilisée pour se co a la BDD
     }
 
 
+
+    //Table convocations
+
     public function saveConvocations($id_match,$id_joueur) {
       $Insert=$this->bdd->prepare("INSERT INTO convocations (id_match,id_joueur)
           VALUES (:match,:joueur)");
@@ -45,12 +48,14 @@ class ModeleBDD // class utilisée pour se co a la BDD
       $Insert->execute();
     }
     //Table admin
+
     public function getAdmin() {
       $Query = "SELECT * FROM admin";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
      //Table matchs
+     
     public function getMatchs()
     {
       $Query="SELECT * FROM matchs";

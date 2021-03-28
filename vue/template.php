@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="vue/style/nav-bar.css"/>
 
     <link rel="stylesheet" type="text/css" href="vue/style/connexion.css"/>
-    <script src=./template.js defer></script>
+    <script src=./vue/script/template.js defer></script>
 
   </head>
 

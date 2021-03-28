@@ -33,7 +33,7 @@ for($i=0;$i<sizeof($query);$i++) {
   $query[$i]['joueurs'] = json_encode($BDD->getJoueursByConvocation($query[$i]['id']));
 }
 function special($match) {
-  //print_r($BDD->getJoueursByConvocation($match['id']));
+
   return '{
     "id":'.$match['id'].',
     "lieu":"'.$match['lieu'].'",

@@ -9,7 +9,7 @@ class Controlleur_consult {
     {
         session_start();
         $vue_consult=new Vue("consultation");
-        $vue_consult->load(array()); //variables a passer a la vue exemple type de role
+        $vue_consult->load(array());
     }
 
 

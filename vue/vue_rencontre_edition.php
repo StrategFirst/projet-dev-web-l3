@@ -29,7 +29,6 @@ function td_select($name="",$data,$options=null)
     //afficher toutes les options possibles
     if($options!=null)
     {
-
         foreach($options as $key=>$opt)
         {   if($opt!=$data)
             {

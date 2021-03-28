@@ -1,7 +1,5 @@
 <?php
 
-include "debug.php";
-
 class Vue {
         private $file;
 
