@@ -2,7 +2,6 @@
 require_once "vue/Vue.php";
 require_once "controlleur/Controlleur_connexion.php";
 require_once "controlleur/Controlleur_consult.php";
-require_once "controlleur/Controlleur_admin.php";
 require_once "controlleur/Controlleur_effectif.php";
 require_once "controlleur/Controlleur_rencontre.php";
 require_once "controlleur/Controlleur_convocation.php";
@@ -34,11 +33,6 @@ class Main {
 
         case 'consult':
           $this->controlleur= new Controlleur_consult();
-          $this->controlleur->affichage();
-        break;
-
-        case 'admin':
-          $this->controlleur= new Controlleur_admin();
           $this->controlleur->affichage();
         break;
 

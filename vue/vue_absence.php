@@ -1,4 +1,4 @@
-<script src="./vue/absence.js" defer></script>
+<script src="./vue/script/absence.js" defer></script>
 <h1>gestion des absences</h1>
 
 

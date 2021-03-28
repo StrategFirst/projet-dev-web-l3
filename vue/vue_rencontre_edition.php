@@ -1,4 +1,4 @@
-<script src="./vue/update_delete.js" defer></script>
+<script src="./vue/script/update_delete.js" defer></script>
 
 <h1>Edition des rencontres (table matchs)</h1>
 
@@ -163,7 +163,7 @@ foreach($matchs as $match )
       <h6> Insertion par fichier CSV </h6>
       <form enctype="multipart/form-data" method="POST" action="/?action=rencontrescsv&mode=edition">
         <input type="file" name="sourceCSV" accept="text/csv"/>
-        <input type="submit" value="envoyez"/>
+        <input type="submit" value="envoyer"/>
       </form>
     </div>
     <h6> Insertion par formulaire </h6>

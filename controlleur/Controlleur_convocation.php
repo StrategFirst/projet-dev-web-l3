@@ -8,7 +8,7 @@ class Controlleur_convocation {
         if( (!isset($_SESSION['role'])) ) { http_response_code(401); die(); }
         if( $_SESSION['role'] != 'entraineur') { http_response_code(403); die(); }
         $vue_consult=new Vue("convocation");
-        $vue_consult->load(array()); //variables a passer a la vue exemple type de role
+        $vue_consult->load(array()); 
     }
 
     public function update()
