@@ -6,15 +6,23 @@ class ModeleBDD // class utilisée pour se co a la BDD
     // contructeur instantie le pdo
     function __construct() {
       $config = parse_ini_file((realpath(dirname(__FILE__))).'/../config.ini');
-      $dsn = "{$config["bddtype"]}:host={$config["bddhost"]};port={$config["bddport"]}";
+      $dsn = "{$config["bddtype"]}:dbname={$config["bddname"]};host={$config["bddhost"]};port={$config["bddport"]}";
       $user = $config["bdduname"];
       $password = $config["bddupass"];
-      $this->bdd = new PDO($dsn,$user,$password);
-   
-      if( ! $this->test = $this->bdd->query('SELECT * FROM admin') ) {
-        $this->init_bdd();
-
+      $bddname = $config["bddname"];
+      try {
+      $this->bdd =new PDO($dsn,$user,$password);
       }
+      catch(PDOException $Exception)
+      {
+          //la BDD n'est pas reconnue il faut la creer
+          $exepctDSN="{$config["bddtype"]}:host={$config["bddhost"]};port={$config["bddport"]}";
+          $this->bdd=new PDO($exepctDSN,$user,$password);
+          $this->init_bdd();
+          $this->bdd =new PDO($dsn,$user,$password);
+      }
+      
+      
     }
 
     private function init_bdd() {
