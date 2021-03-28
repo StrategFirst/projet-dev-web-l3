@@ -98,7 +98,7 @@ foreach($matchs as $match )
 
 
 
-        <form action="controlleur/ajout_matchs.php" method="post">
+        <form action="api/ajout_matchs.php" method="post">
 
         <table>
             <tr>

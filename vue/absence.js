@@ -8,7 +8,7 @@ function udpate(event)
 
    let params=("date="+date+"&id="+id+"&etat="+etat);
 
-    fetch("./controlleur/update_absence.php", {
+    fetch("./api/update_absence.php", {
         method : 'post',
         header :{ 'Content-Type': 'application/x-www-form-urlencoded'},
         body : new URLSearchParams(params)

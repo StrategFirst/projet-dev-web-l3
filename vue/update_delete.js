@@ -12,7 +12,7 @@ function supprime(event){
    
 
    
-    fetch("./controlleur/supprime_matchs.php",{
+    fetch("./api/supprime_matchs.php",{
         method: 'post',
         header :{ 'Content-Type': 'application/json'},
         body: JSON.stringify(id)
@@ -20,10 +20,10 @@ function supprime(event){
     }).
     then(function(response){
         console.log(response);
-        //verifier les status ect
+        
         
         alert("La suppression s'est bien effectuée !");
-        document.location.reload();// le seul moyen que j'ai trouvé 
+        document.location.reload();
     })
     
 
@@ -52,7 +52,7 @@ function update(event){
    
 
    console.log(urlparams);
-    fetch("./controlleur/update_matchs.php",{
+    fetch("./api/update_matchs.php",{
         method: 'post',
         header :{ 'Content-Type': 'application/x-www-form-urlencoded'},
         body: new URLSearchParams(urlparams)
@@ -60,10 +60,10 @@ function update(event){
     }).
     then(function(response){
         console.log(response);
-        //verifier les status ect
+       
         
         alert("La modification s'est bien effectuée !");
-        document.location.reload();// le seul moyen que j'ai trouvé 
+        document.location.reload(); 
     }) 
     
 

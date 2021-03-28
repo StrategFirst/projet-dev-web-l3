@@ -42,7 +42,7 @@
             }
         }
 
-        // ne voulais pas que je mettes global $absences donc je l'ai mit en param de la fonction 
+     
         function find_status_by_id_date($id,$date,$absences) 
         {
             $dt=preg_split("/\//",$date);
@@ -74,7 +74,6 @@
             $nom= $joueur['nom'];
             $id=$joueur['id'];
             echo "<tr><td id=\"$id\">$prenom $nom </td>";
-            //faire pour toutes les dates les select
            foreach($dates_annee as $date)
             {
 
@@ -82,7 +81,7 @@
                 echo"<td><input type=\"hidden\" name=\"date\" value=\"$date\">
                 <select name=\"etat\" onchange=\"udpate(event)\">";
                 
-               $status=find_status_by_id_date($id,$date,$absences);
+               $status=find_status_by_id_date($id,$date,$absences); 
                 switch ($status){
                     case "A" : 
                         option_etat("A",1);

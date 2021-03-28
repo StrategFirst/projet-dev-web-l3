@@ -34,8 +34,7 @@ class Controlleur_admin {
                 break;
 
         }
-        $vue_admin->load(array()); //variables a passer a la vue exemple type de role
-
+        $vue_admin->load(array());
     }
 
 public function setRole(string $role)

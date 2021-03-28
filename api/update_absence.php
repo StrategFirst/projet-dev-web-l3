@@ -4,9 +4,6 @@ require_once (realpath( dirname( __FILE__ ))).'/../debug.php';
 
 $BDD = new ModeleBDD ();
 
-var_dump($_POST);
-
-
 //formattage de la date
 $dt=preg_split("/\//",$_POST['date']);
 $mois=(strlen($dt[1])==2) ?  $dt[1]: ("0".$dt[1]); 
@@ -20,7 +17,6 @@ else{
     $date="2020-".$mois."-".$jour;
   }
 
-  echo $date;
 //si status =null on supprime de la table
 if($BDD->getAbsence($_POST['id'],$date)!=null)
 {

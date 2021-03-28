@@ -54,16 +54,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
     }
 
 
-    //ne marche pas mais la requete fonctionne avec MySqL
 
-   /* public function getMatchsEnum($col)
-    {
-      $Query="SELECT column_type FROM information_schema.COLUMNS
-      WHERE TABLE_NAME = 'matchs'
-          AND COLUMN_NAME = '$col' ";
-          return $this->bdd->query($Query)->fetch(PDO::FETCH_ASSOC);
-    }
-    */
     public function getJoueurDispoLeJour($day) {
       $Query = "SELECT j.*
                 FROM joueurs AS j
