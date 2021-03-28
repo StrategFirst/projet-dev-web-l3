@@ -74,3 +74,33 @@ h1 {
   cursor: pointer;
 
 }
+
+#InsertionCSV {
+  border: none;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 1rem;
+}
+
+
+#InsertionCSV input[type="submit"] {
+  display: inline-block;
+  min-width: 5rem;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: white;
+  padding: 14px 20px;
+  margin: .1rem;
+  cursor: pointer;
+}
+
+#InsertionCSV input[type="file"] {
+  display: inline-block;
+  min-width: 5rem;
+  background-color: white;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 14px 20px;
+  margin: .1rem;
+  cursor: pointer;
+}

@@ -48,6 +48,12 @@ class Main {
           $this->controlleur->affichage();
         break;
 
+        case 'rencontrescsv':
+          $this->controlleur = new Controlleur_rencontre();
+          $this->controlleur->gestionCSV();
+          $this->controlleur->affichage($_GET['mode']);
+        break;
+
         case 'rencontres':
           $this->controlleur = new Controlleur_rencontre();
           $this->controlleur->affichage($_GET['mode']);

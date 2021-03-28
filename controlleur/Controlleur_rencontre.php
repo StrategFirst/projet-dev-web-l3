@@ -11,6 +11,10 @@ class Controlleur_rencontre
       $this->BDD=new ModeleBDD();
     }
 
+    public function gestionCSV() {
+      echo file_get_contents($_FILES['sourceCSV']['tmp_name']);
+    }
+
     public function affichage($mode) {
       session_start();
       if( (!isset($_SESSION['role'])) ) { http_response_code(401); die(); }
