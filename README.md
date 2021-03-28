@@ -22,7 +22,7 @@ l'installatio de la BDD se fait tout seul avec le fichier .ini (lors de la premi
 
 ### Insertion par CSV
 Il est possible d'ajouter des rencontres via un fichier CSV
-cependant il doit respecter le format suivant:
-<compétition>;<équipe local>;<équipe adverse>;<date\*>;<heure\*>;<terrain>;<lieu>
-avec la date au format : AAAA-MM-JJ
-et l'heure au format : HH:mm
+cependant il doit respecter le format suivant:<br/>
+`compétition`;`équipe local`;`équipe adverse`;`date\*`;`heure\*`;`terrain`;`lieu`
+avec la date au format : `AAAA-MM-JJ`
+et l'heure au format : `HH:mm`
