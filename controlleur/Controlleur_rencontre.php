@@ -12,7 +12,35 @@ class Controlleur_rencontre
     }
 
     public function gestionCSV() {
-      echo file_get_contents($_FILES['sourceCSV']['tmp_name']);
+      $dataFromCSV = explode("\n",file_get_contents($_FILES['sourceCSV']['tmp_name']));
+      foreach ($dataFromCSV as $key => $row) {
+        $ligne = str_getcsv($row,';');
+        if(sizeof($ligne) != 7) {
+          $err_msg = "Erreur lors de la lecture du fichier CSV à la ligne $key";
+          $err_code = 8;
+          require 'vue/erreur_box.php';
+          return;
+        }
+        // assignation par destructuration de la liste pour gagner en ligne et en clarté
+        list($competition, $equipe_l, $equipe_a, $date, $heure, $terrain, $site) = $ligne;
+        if
+          (
+            //on n'appause pas de restriction particulière sur la competition
+            //on n'appause pas de restriction particulière sur l'équipe locale
+            //on n'appause pas de restriction particulière sur l'équipe adverse
+            preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/',$date) != 1 ||
+            preg_match('/[0-9]{2}:[0-9]{2}/',$heure) != 1
+            //on n'appause pas de restriction particulière sur le terrain utilisé
+            //on n'appause pas de restriction particulière sur le lieu de la rencontre
+          )
+        {
+          $err_msg = "Erreur lors de la lecture du fichier CSV à la ligne $key";
+          $err_code = 8;
+          require 'vue/erreur_box.php';
+          return;
+        }
+        $this->BDD->addMatch($competition,$equipe_l,$equipe_a,"$date $heure:00",$terrain,$site);
+      }
     }
 
     public function affichage($mode) {
