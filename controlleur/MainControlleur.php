@@ -21,7 +21,10 @@ class Main {
       switch($_GET['action']) {
         case 'convocation':
           $this->controlleur= new Controlleur_convocation();
-          $this->controlleur->affichage();
+          if(isset($_GET['ajout']) && $_GET['ajout']=='true')
+            $this->controlleur->ajout();
+          else
+            $this->controlleur->affichage();
         break;
 
         case 'connexion':
@@ -43,6 +46,12 @@ class Main {
           $this->controlleur = new Controlleur_effectif();
           $this->controlleur->update();
           $this->controlleur->affichage();
+        break;
+
+        case 'rencontrescsv':
+          $this->controlleur = new Controlleur_rencontre();
+          $this->controlleur->gestionCSV();
+          $this->controlleur->affichage($_GET['mode']);
         break;
 
         case 'rencontres':

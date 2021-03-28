@@ -20,6 +20,20 @@ class ModeleBDD // class utilisée pour se co a la BDD
     }
 
 
+    public function saveConvocations($id_match,$id_joueur) {
+      $Insert=$this->bdd->prepare("INSERT INTO convocations (id_match,id_joueur)
+          VALUES (:match,:joueur)");
+          $Insert->bindParam(':match',$id_match);
+          $Insert->bindParam(':joueur',$id_joueur);
+          $Insert->execute();
+        }
+    public function addConvocations($id_match,$id_joueur) {
+      $Insert=$this->bdd->prepare("INSERT INTO convocations (id_match,id_joueur,publie)
+      VALUES (:match,:joueur,1)");
+      $Insert->bindParam(':match',$id_match);
+      $Insert->bindParam(':joueur',$id_joueur);
+      $Insert->execute();
+    }
     //Table admin
     public function getAdmin() {
       $Query = "SELECT * FROM admin";
@@ -50,7 +64,6 @@ class ModeleBDD // class utilisée pour se co a la BDD
           return $this->bdd->query($Query)->fetch(PDO::FETCH_ASSOC);
     }
     */
-
     public function getJoueurDispoLeJour($day) {
       $Query = "SELECT j.*
                 FROM joueurs AS j
@@ -109,16 +122,39 @@ class ModeleBDD // class utilisée pour se co a la BDD
 
 
     }
-
+    public function deleteConvocationSameDayAs($id) {
+      $Request = $this->bdd->prepare("DELETE
+          	FROM convocations
+          	WHERE id_match IN
+          		(SELECT n.id
+          			FROM matchs AS n
+          			WHERE DATE_FORMAT(n.date, '%Y-%m-%d') = (
+          				SELECT DATE_FORMAT(m.date, '%Y-%m-%d') AS jour
+          				FROM matchs AS m
+          				WHERE m.id = ${id}
+          			)
+          		)
+          ;");
+        return $Request->execute();
+    }
+    public function getMatchAvecConvocationPublie() {
+      $Query = "SELECT m.* FROM matchs AS m JOIN convocations AS c ON m.id = c.id_match WHERE c.publie = 1 GROUP BY c.id_match";
+      return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function getMatchAvecConvocation() {
       $Query = "SELECT m.* FROM matchs AS m JOIN convocations AS c ON m.id = c.id_match GROUP BY c.id_match";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function getMatchSansConvocation() {
-      $Query = "SELECT * FROM matchs WHERE id NOT IN (SELECT id_match FROM convocations)";
+    public function getMatchSansConvocationPublie() {
+      $Query = "SELECT * FROM matchs WHERE id NOT IN (SELECT id_match FROM convocations WHERE publie = 1)";
       return $this->bdd->query($Query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function modifLicenceJoueur($id,$lic) {
+      $lic = $lic?0:1;
+      $Request = $this->bdd->prepare("UPDATE joueurs SET license = {$lic} WHERE joueurs.id = $id");
+      $Request->execute();
+    }
     public function DelMatch($id)
     {
       $Query="DELETE from matchs WHERE id=$id";
@@ -155,6 +191,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
       }
     }
 
+
     //Table absences
     public function getAbsences()
     {
@@ -173,7 +210,7 @@ class ModeleBDD // class utilisée pour se co a la BDD
       return $prep->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function AddAbsence($idjoueur,$date,$statu) 
+    function AddAbsence($idjoueur,$date,$statu)
     {
       $Query = 'INSERT into absences (id,date,status) values (:idjoueur, :dat, :statu)';
       $prep=$this->bdd->prepare($Query,array(PDO::ATTR_CURSOR=>PDO::CURSOR_FWDONLY));

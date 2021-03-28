@@ -64,6 +64,7 @@ DROP TABLE IF EXISTS `convocations`;
 CREATE TABLE IF NOT EXISTS `convocations` (
   `id_joueur` int(11) NOT NULL,
   `id_match` int(11) NOT NULL,
+  `publie` boolean NOT NULL DEFAULT FALSE,
   PRIMARY KEY (`id_joueur`,`id_match`),
   KEY `id_match` (`id_match`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -110,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `matchs` (
 --
 ALTER TABLE `absences`
   ADD CONSTRAINT `absences_ibfk_1` FOREIGN KEY (`id`) REFERENCES `joueurs` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-  
-ALTER TABLE `absences` CHANGE `status` `status` ENUM('A','B','N','S') CHARACTER SET utf8 COLLATE utf8_bin NULL; 
+
+ALTER TABLE `absences` CHANGE `status` `status` ENUM('A','B','N','S') CHARACTER SET utf8 COLLATE utf8_bin NULL;
 
 --
 -- Contraintes pour la table `convocations`
@@ -124,3 +125,5 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO `admin` (`username`, `password`, `role`)
+ VALUES ( 'secretaire', 'secretaire', 'secretaire'), ( 'entraineur', 'entraineur', 'entraineur');

@@ -38,10 +38,12 @@ foreach ($BDD->getJoueurs() as $value) {
   $licence = $value['license'] ? 'Licencié' : 'Non licencié';
   if( $_SESSION['role'] == 'secretaire' ) {
   $joueur = <<<EOJ
-    <div>
+    <div class="effectif">
       <h4> {$value['nom']} {$value['prenom']} </h4>
       <span> {$licence} </span>
-      <form action="./?action=effectif&mode=edition" method="POST"><input type="hidden" name="id" value="{$value['id']}"/><input type="submit" value="supprimer"/></form>
+      <br/>
+      <form action="./?action=effectif&mode=edition" method="POST"><input type="hidden" name="id" value="{$value['id']}"/><input type="submit" value="Supprimer"/></form>
+      <form action="./?action=effectif&mode=edition" method="POST"><input type="hidden" name="idl" value="{$value['id']}"/><input type="hidden" name="licence" value="{$value['license']}"/><input type="submit" value="Changer license"/></form>
     </div>
 EOJ;
 } else{
