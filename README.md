@@ -4,6 +4,7 @@
 
 ## Installation
 L'installation de la base de donnée est automatiquement réalisé à la première visite
+il ne faut juste pas avoirs de base de donnée nommée convsport (ni créé ni vide)
 avec le fichier .ini , si vous souhaitez modifier des paramètres (port, host ect.) vous pouvez le faire directement dans le fichier `config.ini`
 
 ## Spécificité de chaque partie
