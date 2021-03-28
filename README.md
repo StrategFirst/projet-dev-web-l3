@@ -1,8 +1,7 @@
-# projet-dev-web-l3
 ### Projet de Dev Web de L3 Informatique de l'Unversité d'Angers.
 ### Contributeurs : Charles Sauvagnac & Mathieu Toulon
 
-#### INSTALLATION
+## INSTALLATION
 l'installatio de la BDD se fait tout seul avec le fichier .ini (lors de la première visite sur le site), si vous souhaitez modifier des paramètres (port, base ect.) vous pouvez le faire directement dans ce fichier
 
 #### Partie Absences :
