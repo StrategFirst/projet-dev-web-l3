@@ -48,7 +48,13 @@
             $dt=preg_split("/\//",$date);
             $mois=(strlen($dt[1])==2) ?  $dt[1]: ("0".$dt[1]); 
             $jour=(strlen($dt[0])==2) ? $dt[0]  : ("0".$dt[0]) ;
-            $date="2021-".$mois."-".$jour;
+            if(($mois=="08" && $jour=="01") || intval($mois)<8 ) 
+            {
+                $date="2021-".$mois."-".$jour;
+            }
+            else{ 
+                $date="2020-".$mois."-".$jour;
+            }
             
             
             foreach ($absences as $absence)
