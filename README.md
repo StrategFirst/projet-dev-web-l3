@@ -28,3 +28,8 @@ cependant il doit respecter le format suivant:<br/>
 `compétition`;`équipe local`;`équipe adverse`;`date\*`;`heure\*`;`terrain`;`lieu`<br/>
 avec la date au format : `AAAA-MM-JJ`<br/>
 et l'heure au format : `HH:mm`<br/>
+Par exemple ceci est un fichier csv d'insertion valide
+```csv
+amical;Angers SCO;FC Nantes;2020-10-09;19:50;stade raymond kopa;Angers
+coupe de france;"Angers SCO";PSG;2020-10-02;21:00;Le Parc des Princes;Paris
+```
